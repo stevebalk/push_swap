@@ -6,11 +6,26 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:05 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/20 16:17:54 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/06/21 12:29:03 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	is_stack_unsorted(t_node *head)
+{
+	t_node	*cur_node;
+
+	cur_node = head;
+	while (cur_node->next != NULL)
+	{
+		if (cur_node->value > cur_node->next->value)
+			return ;
+		cur_node = cur_node->next;
+	}
+	free_list(head);
+	exit (0);
+}
 
 static int	is_number(char *str)
 {
@@ -42,7 +57,7 @@ void	input_check(char **str, int size)
 	int i;
 
 	if (size <= 1)
-		return (0);
+		exit (0);
 	i = 0;
 	while (i < size)
 	{
