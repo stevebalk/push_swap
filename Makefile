@@ -6,13 +6,13 @@
 #    By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 15:43:43 by sbalk             #+#    #+#              #
-#    Updated: 2023/06/19 15:44:48 by sbalk            ###   ########.fr        #
+#    Updated: 2023/06/21 14:01:14 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= push_swap.a
+NAME		= push_swap
 CC			= gcc
-CFLAGS		= -Werror -Wall -Wextra -I
+CFLAGS		= -Werror -Wall -Wextra
 RM			= rm -f
 SRC_DIR		= src/
 OBJ_DIR		= obj/
@@ -31,7 +31,14 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
-SRC_FILES	=	ft_push_swap.c
+SRC_FILES	=	push_swap \
+				error_handling \
+				list_utils \
+				push \
+				reverse_rotate \
+				rotate \
+				swap \
+				utils
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -41,11 +48,6 @@ OBJF		= .cache_exists
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-				@make -C $(LIBFT)
-				@cp libft/libft.a .
-				@mv libft.a $(NAME)
-				@$(AR) $(NAME) $(OBJ)
-				@echo "$(GREEN)ft_printf compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
@@ -58,19 +60,18 @@ bonus:		$(NAME)
 
 clean:
 			@$(RM) -rf $(OBJ_DIR)
-			@make clean -C $(LIBFT)
-			@echo "$(BLUE)ft_printf object files cleaned!$(DEF_COLOR)"
+			@echo "$(BLUE)push_swap object files cleaned!$(DEF_COLOR)"
 
 fclean:		clean
 			@$(RM) -f $(NAME)
-			@$(RM) -f $(LIBFT)/libft.a
-			@echo "$(CYAN)ft_printf executable files cleaned!$(DEF_COLOR)"
-			@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
+			@echo "$(CYAN)push_swap executable files cleaned!$(DEF_COLOR)"
 
 re:			fclean all
-			@echo "$(GREEN)Cleaned and rebuilt everything for ft_printf!$(DEF_COLOR)"
+			@echo "$(GREEN)Cleaned and rebuilt everything for push_swap!$(DEF_COLOR)"
 
 norm:
-			@norminette $(SRC) $(SRCB) $(INCLUDE) $(LIBFT) | grep -v Norme -B1 || true
+			@norminette $(SRC) $(SRCB) $(INCLUDE) | grep -v Norme -B1 || true
 
-.PHONY:		all clean fclean re norm
+debug:		
+
+.PHONY:		all clean fclean re norm debug
