@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/22 14:15:18 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/06/22 14:19:37 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 t_node	*free_list(t_node *head)
 {
-	t_node	*next_node;
 	t_node	*cur_node;
 
-	next_node = head;
-	while (next_node != NULL)
+	while (head != NULL)
 	{
-		cur_node = next_node;
-		next_node = cur_node->next;
+		cur_node = head;
+		head = cur_node->next;
 		free(cur_node);
 	}
 	return (NULL);
@@ -37,16 +35,6 @@ t_node	*create_node(char *str, int index)
 	new_node->index = index;
 	new_node->next = NULL;
 	return (new_node);
-}
-
-t_node	*get_last_node(t_node *head)
-{
-	t_node	*tail;
-
-	tail = head;
-	while(tail->next != NULL)
-		tail = tail->next;
-	return (tail);
 }
 
 t_node	*create_stack(int size, char **strings)
@@ -78,7 +66,7 @@ t_node	*create_stack(int size, char **strings)
 
 t_node	*get_last_node(t_node *node)
 {
-	if (node = NULL)
+	if (node == NULL)
 		return (NULL);
 	while (node->next != NULL)
 		node = node->next;
