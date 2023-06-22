@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:43:01 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/22 15:55:51 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/06/22 16:25:51 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int	main(int argc, char **argv)
 	a = create_stack(argc, argv);
 	is_stack_unsorted(&a);
 	debug_print_stack(a, "A");
-	pa(&a, &b);
-	ra(&a);
-	rra(&a);
+	// pa(&a, &b);
+	// ra(&a);
+	// rra(&a);
+	sa(&a);
 	debug_print_stack(a, "A");
 	debug_print_stack(b, "B");
 	free_list(&a);
