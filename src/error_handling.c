@@ -6,17 +6,17 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:05 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/21 14:32:42 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/06/22 15:10:34 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	is_stack_unsorted(t_node *head)
+void	is_stack_unsorted(t_node **head)
 {
 	t_node	*cur_node;
 
-	cur_node = head;
+	cur_node = *head;
 	while (cur_node->next != NULL)
 	{
 		if (cur_node->value > cur_node->next->value)

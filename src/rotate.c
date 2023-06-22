@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:06:33 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/22 14:40:31 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/06/22 14:49:21 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ void	rb(t_node **stack)
 {
 	rotate(stack);
 	putstr("rb\n");
+}
+
+void	rr(t_node **a, t_node **b)
+{
+	ra(a);
+	rb(b);
 }

@@ -6,18 +6,17 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:25 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/22 13:52:23 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/06/22 15:48:29 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-
 static void	push(t_node **src, t_node **dst)
 {
 	t_node	*src_head;
-
+	if (*dst == NULL)
+		*dst = NULL;
 	src_head = *src;
 	*src = src_head->next;
 	src_head->next = *dst;

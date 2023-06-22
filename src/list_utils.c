@@ -6,23 +6,23 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/22 14:19:37 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/06/22 15:43:04 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*free_list(t_node *head)
+void	free_list(t_node **head)
 {
 	t_node	*cur_node;
 
-	while (head != NULL)
+	while (*head != NULL)
 	{
-		cur_node = head;
-		head = cur_node->next;
+		cur_node = *head;
+		*head = cur_node->next;
 		free(cur_node);
 	}
-	return (NULL);
+	*head = NULL;
 }
 
 t_node	*create_node(char *str, int index)
@@ -54,7 +54,7 @@ t_node	*create_stack(int size, char **strings)
 		new_node = create_node(strings[i], i);
 		if (new_node == NULL)
 		{
-			free_list(head_node);
+			free_list(&head_node);
 			exit (1);
 		}
 		cur_node->next = new_node;
