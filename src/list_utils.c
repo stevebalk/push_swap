@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/21 12:31:06 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/06/22 14:15:18 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_node	*create_stack(int size, char **strings)
 	if (head_node == NULL)
 		exit (1);
 	cur_node = head_node;
-	while (i < size - 1)
+	while (i < size)
 	{
 		new_node = create_node(strings[i], i);
 		if (new_node == NULL)
@@ -74,6 +74,15 @@ t_node	*create_stack(int size, char **strings)
 		i++;
 	}
 	return (head_node);
+}
+
+t_node	*get_last_node(t_node *node)
+{
+	if (node = NULL)
+		return (NULL);
+	while (node->next != NULL)
+		node = node->next;
+	return (node);
 }
 
 void	debug_print_stack(t_node *stack, char *name)

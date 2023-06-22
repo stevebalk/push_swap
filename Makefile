@@ -6,18 +6,19 @@
 #    By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 15:43:43 by sbalk             #+#    #+#              #
-#    Updated: 2023/06/21 14:01:14 by sbalk            ###   ########.fr        #
+#    Updated: 2023/06/21 15:43:14 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= push_swap
 CC			= gcc
 CFLAGS		= -Werror -Wall -Wextra
-RM			= rm -f
+RM			= rm
 SRC_DIR		= src/
 OBJ_DIR		= obj/
+DOBJ_DIR	= dobj/
 AR			= ar rcs
-INCLUDE		= include
+INCLUDE		= -I include
 
 # Colors
 
@@ -31,47 +32,59 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
-SRC_FILES	=	push_swap \
-				error_handling \
+SRC_FILES	=	error_handling \
 				list_utils \
 				push \
 				reverse_rotate \
 				rotate \
 				swap \
-				utils
+				utils \
+				push_swap 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+OBJ	 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+DOBJ	 	= 	$(addprefix $(DOBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 OBJF		= .cache_exists
 
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
+			@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+			@echo "$(GREEN)Created $(NAME)!$(DEF_COLOR)"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-			$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
-
-$(OBJF):
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
 			@mkdir -p $(OBJ_DIR)
+			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+$(DOBJ_DIR)%.o: $(SRC_DIR)%.c
+			@mkdir -p $(DOBJ_DIR)
+			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@ -g
 
 bonus:		$(NAME)
 
 clean:
 			@$(RM) -rf $(OBJ_DIR)
-			@echo "$(BLUE)push_swap object files cleaned!$(DEF_COLOR)"
+			@$(RM) -rf $(DOBJ_DIR)
+			@echo "$(BLUE)$(NAME) object files cleaned!$(DEF_COLOR)"
 
 fclean:		clean
 			@$(RM) -f $(NAME)
-			@echo "$(CYAN)push_swap executable files cleaned!$(DEF_COLOR)"
+			@echo "$(CYAN)$(NAME) executable files cleaned!$(DEF_COLOR)"
 
 re:			fclean all
-			@echo "$(GREEN)Cleaned and rebuilt everything for push_swap!$(DEF_COLOR)"
+			@echo "$(GREEN)Cleaned and rebuilt everything for $(NAME)push_swap!$(DEF_COLOR)"
 
 norm:
 			@norminette $(SRC) $(SRCB) $(INCLUDE) | grep -v Norme -B1 || true
 
-debug:		
+debug:		$(DOBJ)
+			@$(CC) $(CFLAGS) $(DOBJ) -o $(NAME) -g
+			@echo "$(GREEN)Created $(NAME) DEBUG BUILD!$(DEF_COLOR)"
+
+debugre:	fclean debug
+			@echo "$(GREEN)Cleaned and rebuilt everything for $(NAME) DEBUG BUILD!$(DEF_COLOR)"
 
 .PHONY:		all clean fclean re norm debug

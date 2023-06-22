@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/21 12:29:47 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/06/22 13:52:05 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ t_node	*create_stack(int size, char **strings);
 
 /* Push swap functions */
 
-void	pa(t_node *a, t_node *b);
-void	pb(t_node *a, t_node *b);
+void	pa(t_node **a, t_node **b);
+void	pb(t_node **a, t_node **b);

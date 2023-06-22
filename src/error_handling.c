@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:05 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/21 12:29:03 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/06/21 14:32:42 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ void	input_check(char **str, int size)
 {
 	int i;
 
-	if (size <= 1)
-		exit (0);
 	i = 0;
 	while (i < size)
 	{
@@ -69,5 +67,7 @@ void	input_check(char **str, int size)
 		str++;
 		i++;
 	}
+	if (size <= 1)
+		exit (0);
 }
 
