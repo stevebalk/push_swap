@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/22 13:52:05 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/06/22 14:42:44 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,5 @@ t_node	*create_stack(int size, char **strings);
 
 void	pa(t_node **a, t_node **b);
 void	pb(t_node **a, t_node **b);
+void	ra(t_node **stack);
+void	rb(t_node **stack);

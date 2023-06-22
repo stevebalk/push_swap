@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 15:43:43 by sbalk             #+#    #+#              #
-#    Updated: 2023/06/21 15:43:14 by sbalk            ###   ########.fr        #
+#    Updated: 2023/06/22 14:24:36 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,4 +87,9 @@ debug:		$(DOBJ)
 debugre:	fclean debug
 			@echo "$(GREEN)Cleaned and rebuilt everything for $(NAME) DEBUG BUILD!$(DEF_COLOR)"
 
-.PHONY:		all clean fclean re norm debug
+git:		fclean
+			@git status
+			@git add *
+			@git status
+
+.PHONY:		all clean fclean re norm debug debugre git
