@@ -6,11 +6,11 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/22 15:43:04 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/10 15:32:38 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	free_list(t_node **head)
 {
@@ -25,19 +25,31 @@ void	free_list(t_node **head)
 	*head = NULL;
 }
 
-t_node	*create_node(char *str, int index)
+t_node	*create_node(int value, int *sorted_array, int size)
 {
+	int i;
+
+	i = 0;
 	t_node	*new_node;
+
 	new_node = malloc(1 * sizeof(t_node));
 	if (new_node == NULL)
 		return (NULL);
-	new_node->value = ft_atoi(str);
-	new_node->index = index;
+	new_node->value = value;
+	while (i < size)
+	{
+		if (sorted_array[i] == new_node->value)
+		{
+			new_node->index = i;
+			break;
+		}
+		i++;
+	}
 	new_node->next = NULL;
 	return (new_node);
 }
 
-t_node	*create_stack(int size, char **strings)
+t_node	*create_stack(int size, int *nums, int *sorted_nums)
 {
 	t_node	*head_node;
 	t_node	*cur_node;
@@ -45,13 +57,13 @@ t_node	*create_stack(int size, char **strings)
 	int		i;
 
 	i = 1;
-	head_node = create_node(strings[0], 0);
+	head_node = create_node(nums[0], sorted_nums, size);
 	if (head_node == NULL)
 		exit (1);
 	cur_node = head_node;
 	while (i < size)
 	{
-		new_node = create_node(strings[i], i);
+		new_node = create_node(nums[i], sorted_nums, size);
 		if (new_node == NULL)
 		{
 			free_list(&head_node);
@@ -79,7 +91,7 @@ void	debug_print_stack(t_node *stack, char *name)
 	printf("Stack %s\n", name);
 	while (stack != NULL)
 	{
-		printf("%i\n", stack->value);
+		printf("%i, index: %i\n", stack->value, stack->index);
 		stack = stack->next;
 	}
 	printf("-----------\n");

@@ -6,30 +6,27 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:43:01 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/22 16:25:51 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/10 16:18:51 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	main(int argc, char **argv)
 {
 	t_node	*a;
 	t_node	*b;
+	int		*nums;
+	int		*sorted_nums;
 
 	b = NULL;
 	argc--;
 	argv++;
 	input_check(argv, argc);
-	a = create_stack(argc, argv);
+	nums = convert_to_int_array(argc, argv);
+	sorted_nums = create_sorted_array(argc, nums);
+	a = create_stack(argc, nums, sorted_nums);
 	is_stack_unsorted(&a);
-	debug_print_stack(a, "A");
-	// pa(&a, &b);
-	// ra(&a);
-	// rra(&a);
-	sa(&a);
-	debug_print_stack(a, "A");
-	debug_print_stack(b, "B");
 	free_list(&a);
 	free_list(&b);
 	return (0);

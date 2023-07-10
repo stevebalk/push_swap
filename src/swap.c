@@ -6,11 +6,11 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 16:14:42 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/22 16:24:59 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/10 15:26:11 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static void	swap(t_node **head)
 {

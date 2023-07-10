@@ -6,11 +6,11 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:25:29 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/21 12:11:35 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/10 15:26:15 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	is_digit(char ch)
 {

@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 15:43:43 by sbalk             #+#    #+#              #
-#    Updated: 2023/06/22 14:24:36 by sbalk            ###   ########.fr        #
+#    Updated: 2023/07/10 16:24:51 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC_FILES	=	error_handling \
 				rotate \
 				swap \
 				utils \
+				index_functions \
 				push_swap 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
@@ -78,7 +79,7 @@ re:			fclean all
 			@echo "$(GREEN)Cleaned and rebuilt everything for $(NAME)push_swap!$(DEF_COLOR)"
 
 norm:
-			@norminette $(SRC) $(SRCB) $(INCLUDE) | grep -v Norme -B1 || true
+			@norminette $(SRC) include/$(NAME).h| grep -v Norme -B1 || true
 
 debug:		$(DOBJ)
 			@$(CC) $(CFLAGS) $(DOBJ) -o $(NAME) -g

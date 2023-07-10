@@ -6,19 +6,22 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/22 16:25:26 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/10 16:29:47 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <stdio.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
+# include <stdio.h>
 
 typedef struct s_node
 {
 	int				value;
-	ssize_t			index;
+	int				index;
 	struct s_node	*next;
 }	t_node;
 
@@ -34,12 +37,17 @@ void	debug_print_stack(t_node *stack, char *name); // DELETE LATER!!!
 void	input_check(char **str, int size);
 void	is_stack_unsorted(t_node **head);
 
+/* index functions */
+
+int		*convert_to_int_array(int size, char **list);
+int		*create_sorted_array(int size, int *list);
+
 /* List functions */
 
-void	free_list(t_node **head);
-t_node	*create_node(char *str, int index);
+t_node	*create_node(int value, int *sorted_array, int size);
+t_node	*create_stack(int size, int *nums, int *sorted_nums);
 t_node	*get_last_node(t_node *head);
-t_node	*create_stack(int size, char **strings);
+void	free_list(t_node **head);
 
 /* Push swap functions */
 
@@ -51,3 +59,5 @@ void	rra(t_node **a);
 void	rrb(t_node **b);
 void	sa(t_node **a);
 void	sb(t_node **b);
+
+#endif

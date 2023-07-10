@@ -6,11 +6,11 @@
 /*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:49:28 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/22 15:04:42 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/10 15:26:07 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static t_node	*get_second_last(t_node *node)
 {
