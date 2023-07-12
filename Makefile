@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+         #
+#    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 15:43:43 by sbalk             #+#    #+#              #
-#    Updated: 2023/07/10 16:24:51 by sbalk            ###   ########.fr        #
+#    Updated: 2023/07/12 15:43:38 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ SRC_FILES	=	error_handling \
 				swap \
 				utils \
 				index_functions \
+				quicksort \
+				push_swap_quicksort \
 				push_swap 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

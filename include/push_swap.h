@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/10 16:29:47 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/12 15:44:10 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_node
 {
-	int				value;
+	int				value; // Useless???
 	int				index;
 	struct s_node	*next;
 }	t_node;
@@ -41,6 +41,11 @@ void	is_stack_unsorted(t_node **head);
 
 int		*convert_to_int_array(int size, char **list);
 int		*create_sorted_array(int size, int *list);
+
+/* Sorting functions */
+
+void	quicksort(int arr[], int low, int high);
+void	ps_quicksort(t_node **a, t_node **b, int size);
 
 /* List functions */
 
