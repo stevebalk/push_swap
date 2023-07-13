@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:43:01 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/12 17:23:49 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/13 17:29:36 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	a = create_stack(argc, nums, sorted_nums);
 	is_stack_unsorted(&a);
 	debug_print_stack(a, "A");
-	ps_quicksort(&a, &b, argc);
+	ps_quicksort(&a, &b, argc - 1);
 	debug_print_stack(a, "A");
 	free_list(&a);
 	free_list(&b);

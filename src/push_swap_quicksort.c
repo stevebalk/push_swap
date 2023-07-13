@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:18:41 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/12 18:27:46 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/13 18:08:02 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,12 @@ static void	rotate_backward(t_node **a, int steps)
 		rra(a);
 }
 
-int	get_median(t_node **a, int size)
-{
-	int i;
-	int sum;
-	t_node *cur_node;
-
-	sum = 0;
-	i = 0;
-	cur_node = *a;
-	while (i++ < size)
-	{
-		sum += cur_node->index;
-		cur_node = cur_node->next;
-	}
-	return (sum / 2);
-}
-
-int get_pivot(t_node **a, int size)
+static int get_pivot(t_node **a, int size)
 {
 	t_node *cur_node;
 
 	cur_node = *a;
-	while (size > 1)
+	while (size)
 	{
 		cur_node = cur_node->next;
 		size--;
@@ -60,20 +43,34 @@ int get_pivot(t_node **a, int size)
 	return cur_node->index;
 }
 
+// static int is_sorted(t_node **stack, int pivot, int size)
+// {
+// 	t_node *cur_node;
+
+// 	cur_node = *stack;
+// 	while (size--)
+// 	{
+// 		if (cur_node->index > pivot)
+// 			return (0);
+// 		cur_node = cur_node->next;
+// 	}
+// 	return (1);
+// }
+
 void	ps_quicksort(t_node **a, t_node **b, int size)
 {
 	int	i;
-	int median;
+	int pivot;
 	int top_half_len;
 
-	if (size <= 1)
+	if (size == 1)
 		return ;
-	median = get_pivot(a, size);
+	pivot = get_pivot(a, size);
 	top_half_len = 0;
 	i = 0;
 	while (i++ < size)
 	{
-		if ((*a)->index > median)
+		if ((*a)->index > pivot)
 		{
 			pa(a, b);
 			top_half_len++;
@@ -81,9 +78,20 @@ void	ps_quicksort(t_node **a, t_node **b, int size)
 		else
 			ra(a);
 	}
-	push_larger_half(a, b, top_half_len);
-	ps_quicksort(a, b, top_half_len);
-	rotate_forward(a, top_half_len);
-	ps_quicksort(a, b, size - top_half_len);
-	rotate_backward(a, top_half_len);
+	printf("Loop\n");
+	fflush(stdout);
+	if (top_half_len > 0)
+	{
+		rotate_backward(a, size - top_half_len);
+		push_larger_half(a, b, top_half_len);
+		ps_quicksort(a, b, top_half_len);
+		rotate_forward(a, size - top_half_len);
+		ps_quicksort(a, b, size - top_half_len);
+		rotate_backward(a, top_half_len);
+	}
+	else
+	{
+		ps_quicksort(a, b, size - 1);
+		rotate_backward(a, top_half_len);
+	}
 }
