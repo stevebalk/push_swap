@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:25 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/10 15:26:03 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/20 12:24:21 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ static void	push(t_node **src, t_node **dst)
 
 void	pa(t_node **a, t_node **b)
 {
-	push(a, b);
+	push(b, a);
 	putstr("pa\n");
 }
 
 void	pb(t_node **a, t_node **b)
 {
-	push(b, a);
+	push(a, b);
 	putstr("pb\n");
 }

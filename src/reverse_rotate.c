@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:49:28 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/10 15:26:07 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/20 15:16:56 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,20 @@ void	reverse_rotate(t_node **head)
 
 void	rra(t_node **a)
 {
-	reverse_rotate(a);
-	putstr("rra\n");
+	if ((*a)->next != NULL)
+	{
+		reverse_rotate(a);
+		putstr("rra\n");
+	} 
 }
 
 void	rrb(t_node **b)
 {
-	reverse_rotate(b);
-	putstr("rrb\n");
+	if ((*b)->next != NULL)
+	{
+		reverse_rotate(b);
+		putstr("rrb\n");
+	}
 }
 
 void	rrr(t_node **a, t_node **b)

@@ -3,137 +3,143 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_quicksort.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:18:41 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/17 17:16:29 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/25 18:55:18 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_larger_half(t_node **a, t_node **b, int size)
+
+/* Returns the smallest index value from the given list */
+static int	get_list_min_index(t_node *stack)
 {
-	while (size--)
-		pb(a, b);
+	int min_value;
+
+	min_value = stack->index;
+	while (stack->next != NULL)
+		if (stack->index < min_value)
+		{
+			min_value = stack->index;
+			stack = stack->next;
+		}
+	return (min_value);
 }
 
-static void	rotate_forward(t_node **a, int steps)
+/* Returns the highest index value from the given list */
+static int	get_list_max_index(t_node *stack)
 {
-	while (steps--)
-		ra(a);
+	int max_value;
+
+	max_value = stack->index;
+	while (stack->next != NULL)
+		if (stack->index > max_value)
+		{
+			max_value = stack->index;
+			stack = stack->next;
+		}
+	return (max_value);
 }
 
-static void	rotate_backward(t_node **a, int steps)
+
+int	get_chunk_median(t_node *stack, int chunksize)
 {
-	while (steps--)
-		rra(a);
+	int *sorted_values;
+	int array_size;
+
+	array_size = copy_list_to_array(stack, &sorted_values);
+	quicksort(sorted_values, 0, array_size - 1);
+	return (sorted_values[chunksize / 2 - 1]);
 }
 
-static void	push_pivot(t_node **a, t_node **b)
+void	quicksort_stack(t_node **src, t_node **dst, int size, int chunks)
 {
-	pa(a, b);
-	rb(b);
-}
-
-static int get_median(t_node **stack, int size)
-{
-	int *nums;
+	int	chunksize;
+	int chunk;
 	int i;
-	t_node *cur_node;
-	int low;
-	int high;
+	int min;
+	int max;
 	int median;
 
+	chunksize = size / chunks;
+	chunk = 0;
 	i = 0;
-	low = 0;
-	high = 0;
-	nums = malloc(sizeof(int) * size);
-	cur_node = *stack;
-	if (nums == NULL)
-		return (0);
-	while (i < size)
+
+	while (chunks)
 	{
-		nums[i] = cur_node->index;
-		if (nums[i] < low)
-			low = nums[i];
-		if (nums[i] > high)
-			high = nums[i];
-		cur_node = cur_node->next;
-		i++;
+		min = get_list_min_index(src);
+		max = get_list_max_index(src);
+		median = get_chunk_median(src, chunksize * 2);
+		while (i < chunksize * 2);
+		{
+			if ((*src)->index >= min && (*src)->index <= median)
+			{
+				if ((*dst) != NULL && (*dst)->index > median)
+					rb(dst);
+				pb(src, dst);
+				i++;
+			}
+			else if ((*src)->index > median && (*src)->index <= max)
+			{
+				if ((*dst) != NULL && (*dst)->index > median)
+					rb(dst);
+				pb(src, dst);
+				i++;
+			}
+			else
+			{
+				if ((*dst) != NULL && (*dst)->index > median)
+					rr(src, dst);
+				else:
+					ra(src);
+			}
+		}
+		i = 0;
 	}
-	quicksort(nums, low, high);
-	median = nums[size / 2];
-	free(nums);
-	printf("Median: %d Size: %d\n", median, size);
-	return (median);
+	chunks -= 2;
 }
 
-// static int get_pivot(t_node **a, int size)
-// {
-// 	t_node *cur_node;
-
-// 	cur_node = *a;
-// 	while (size)
-// 	{
-// 		cur_node = cur_node->next;
-// 		size--;
-// 	}
-// 	return cur_node->index;
-// }
-
-// static int is_sorted(t_node **stack, int pivot, int size)
-// {
-// 	t_node *cur_node;
-
-// 	cur_node = *stack;
-// 	while (size--)
-// 	{
-// 		if (cur_node->index > pivot)
-// 			return (0);
-// 		cur_node = cur_node->next;
-// 	}
-// 	return (1);
-// }
-
-void	ps_quicksort(t_node **a, t_node **b, int size)
+int	get_next_pos(t_node **src, int index)
 {
 	int	i;
-	int pivot;
-	int moved_b;
+	int	j;
+	int	size;
+	int *array;
 
-	if (size <= 1)
-		return ;
-	pivot = get_median(a, size);
-	moved_b = 0;
 	i = 0;
-	while (i++ < size)
+	j = 0;
+	size = copy_list_to_array(*src, &array);
+	while (i < size)
 	{
-		if ((*a)->index > pivot)
-		{
-			pa(a, b);
-			moved_b++;
-		}
-		else if ((*a)->index == pivot)
-		{
-			push_pivot(a, b);
-			moved_b++;
-		}
+		if (array[i] == index)
+			break ;
+		i++;
+	}
+	while (j < size)
+		if (array[size])
+
+}
+
+void	insertion_sort(t_node **src, t_node **dst)
+{
+	int	*sorted_array;
+	int	array_size;
+	int	next_pos;
+	int	offset;
+
+	array_size = copy_list_to_array(src, dst);
+	quicksort(sorted_array, 0, array_size - 1);
+	offset = 0;
+
+	while ((*src) != NULL)
+	{
+		next_pos = get_next_pos(src, sorted_array[array_size - 1 - offset]);
+		if ((*src)->next != NULL)
+			offset += smart_push(src, next_pos, sorted_array[array_size - 2 - offset]);
 		else
-			ra(a);
+			pa(src, dst);
+		offset++;
 	}
-	// printf("Loop\n");
-	// fflush(stdout);
-	if (moved_b)
-	{
-		// rotate_backward(a, moved_b);
-		push_larger_half(a, b, moved_b);
-		ra(a);
-		ps_quicksort(a, b, size - moved_b - 1);
-		rotate_backward(a, moved_b);
-		ps_quicksort(a, b, moved_b - 1);
-		rotate_forward(a, moved_b);
-	}
-	else
-		rotate_backward(a, moved_b);
 }

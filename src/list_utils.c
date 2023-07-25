@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/10 15:32:38 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/25 18:33:22 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,45 @@ t_node	*get_last_node(t_node *node)
 		node = node->next;
 	return (node);
 }
+
+int	get_list_size(t_node *stack)
+{
+	int	size;
+	t_node	*cur_node;
+
+	size = 0;
+	cur_node = *stack;
+	while (cur_node != NULL)
+	{
+		size++;
+		cur_node = cur_node->next;
+	}
+	return (size);
+}
+
+/* Copies a linked list to an array and returns the size */
+int	copy_list_to_array(t_node *src, int **dst)
+{
+	t_node	*cur_node;
+	int	list_size;
+	int	i;
+
+	cur_node = src;
+	list_size = get_list_size(src);
+	*dst = malloc(list_size * sizeof(int));
+	if (*dst == NULL)
+		exit(1);
+	i = 0;
+	while (src)
+	{
+		(*dst)[i] = src->index;
+		src = src->next;
+		i++;
+	}
+
+	return list_size;
+}
+
 
 void	debug_print_stack(t_node *stack, char *name)
 {
