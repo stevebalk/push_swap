@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/26 12:41:37 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/26 18:10:43 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,24 @@
 
 typedef struct s_node
 {
-	int				value; // Useless???
+	int				value;
 	int				index;
 	struct s_node	*next;
 }	t_node;
+
+typedef struct s_qsdata
+{
+	int	min;
+	int	max;
+	int	median;
+}	t_qsdata;
 
 /* Utility */
 
 int		is_digit(char ch);
 void	putstr(char	*str);
 ssize_t	ft_atoi(const char *str);
+int		ft_abs(int nb);
 void	debug_print_stack(t_node *stack, char *name); // DELETE LATER!!!
 
 /* Error handling */

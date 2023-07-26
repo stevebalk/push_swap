@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 16:14:42 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/10 15:26:11 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/26 16:44:06 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,30 @@ static void	swap(t_node **head)
 
 void	sa(t_node **a)
 {
-	swap(a);
-	putstr("sa\n");
+	if ((*a)->next)
+	{
+		swap(a);
+		putstr("sa\n");
+	}
 }
 
 void	sb(t_node **b)
 {
-	swap(b);
-	putstr("sb\n");
+	if ((*b)->next)
+	{
+		swap(b);
+		putstr("sb\n");
+	}
 }
 
 void	ss(t_node **a, t_node **b)
 {
-	sa(a);
-	sb(b);
+	if ((*a)->next && (*b)->next)
+	{
+		swap(a);
+		swap(b);
+		putstr("ss\n");
+	}
+	else
+		putstr("SS Failed!!!");
 }

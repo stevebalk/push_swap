@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:25:29 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/10 15:26:15 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/26 17:51:38 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@ int	is_digit(char ch)
 		return (1);
 	return (0);
 }
-
-// int is_whitespace(char ch)
-// {
-// 	if (ch == ' ')
-// 		return (1);
-// 	return (0);
-// }
 
 void	putstr(char	*str)
 {
@@ -60,4 +53,11 @@ ssize_t	ft_atoi(const char *str)
 		str++;
 	}
 	return (nb * sign);
+}
+
+int	ft_abs(int nb)
+{
+	if (nb < 0)
+		return (nb * -1);
+	return (nb);
 }

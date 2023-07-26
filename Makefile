@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 15:43:43 by sbalk             #+#    #+#              #
-#    Updated: 2023/07/12 15:43:38 by sbalk            ###   ########.fr        #
+#    Updated: 2023/07/26 18:13:06 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,9 @@ SRC_FILES	=	error_handling \
 				utils \
 				index_functions \
 				quicksort \
-				push_swap_quicksort \
-				push_swap 
+				quicksort_stack \
+				insertion_sort \
+				push_swap \
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ	 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
