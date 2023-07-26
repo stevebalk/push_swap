@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/25 18:34:27 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/26 12:41:37 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int		*create_sorted_array(int size, int *list);
 /* Sorting functions */
 
 void	quicksort(int arr[], int low, int high);
-void	ps_quicksort(t_node **a, t_node **b, int size);
+void	quicksort_stack(t_node **src, t_node **dst, int size, int chunks);
+void	insertion_sort(t_node **a, t_node **b);
 
 /* List functions */
 
@@ -54,7 +55,7 @@ t_node	*create_stack(int size, int *nums, int *sorted_nums);
 t_node	*get_last_node(t_node *head);
 int		copy_list_to_array(t_node *src, int **dst);
 void	free_list(t_node **head);
-int	get_list_size(t_node *stack)
+int		get_list_size(t_node *stack);
 
 /* Push swap functions */
 
@@ -68,9 +69,6 @@ void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 void	sa(t_node **a);
 void	sb(t_node **b);
-void	ss(t_node **a, t_node **b)
-
-
-int	get_chunk_median(t_node *stack, int chunksize);
+void	ss(t_node **a, t_node **b);
 
 #endif

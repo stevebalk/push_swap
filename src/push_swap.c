@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:43:01 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/25 17:16:22 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/26 13:46:29 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	main(int argc, char **argv)
 	// print_array(nums, argc);
 	a = create_stack(argc, nums, sorted_nums);
 	is_stack_unsorted(&a);
-	debug_print_stack(a, "A");
-	// ps_quicksort(&a, &b, argc);
-	printf("Median: %d\n", get_chunk_median(a, argc));
-	debug_print_stack(a, "A");
-	debug_print_stack(b, "B");
+	// debug_print_stack(a, "A");
+	quicksort_stack(&a, &b, argc, 10);
+	// printf("Median: %d\n", get_chunk_median(a, argc));
+	// debug_print_stack(a, "A");
+	// debug_print_stack(b, "B");
 	free_list(&a);
 	free_list(&b);
 	return (0);

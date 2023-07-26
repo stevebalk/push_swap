@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/25 18:33:22 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/26 12:44:11 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	get_list_size(t_node *stack)
 	t_node	*cur_node;
 
 	size = 0;
-	cur_node = *stack;
+	cur_node = stack;
 	while (cur_node != NULL)
 	{
 		size++;
@@ -103,11 +103,9 @@ int	get_list_size(t_node *stack)
 /* Copies a linked list to an array and returns the size */
 int	copy_list_to_array(t_node *src, int **dst)
 {
-	t_node	*cur_node;
 	int	list_size;
 	int	i;
 
-	cur_node = src;
 	list_size = get_list_size(src);
 	*dst = malloc(list_size * sizeof(int));
 	if (*dst == NULL)
