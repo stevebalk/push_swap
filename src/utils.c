@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:25:29 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/26 17:51:38 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/27 12:33:25 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,33 @@ int	ft_abs(int nb)
 	if (nb < 0)
 		return (nb * -1);
 	return (nb);
+}
+
+/* Checks for n elements if given list is sorted.
+dir 1 == Lower to higher, dir -1 higher to lower*/
+int	is_list_n_sorted(t_node **stack, int len, int dir)
+{
+	t_node	*cur_node;
+
+	cur_node = *stack;
+	if (dir == 1)
+		while (cur_node && cur_node->next && len)
+		{
+			if (cur_node->index > cur_node->next->index)
+				return (0);
+			len--;
+			cur_node = cur_node->next;
+		}
+	else if (dir == -1)
+	{
+		while (cur_node && cur_node->next && len)
+		{
+			if (cur_node->index < cur_node->next->index)
+				return (0);
+			len--;
+			cur_node = cur_node->next;
+		}
+	}
+	printf("Sorted!!");
+	return (1);
 }

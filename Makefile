@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 15:43:43 by sbalk             #+#    #+#              #
-#    Updated: 2023/07/26 18:13:06 by sbalk            ###   ########.fr        #
+#    Updated: 2023/07/27 12:11:21 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC_FILES	=	error_handling \
 				utils \
 				index_functions \
 				quicksort \
+				small_sorting \
 				quicksort_stack \
 				insertion_sort \
 				push_swap \

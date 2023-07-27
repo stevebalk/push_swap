@@ -6,13 +6,13 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:53:50 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/26 18:31:01 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/27 15:02:18 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_next_pos(t_node **src, int index)
+int	get_next_pos(t_node **src, int index)
 {
 	int	i;
 	int	j;
@@ -39,7 +39,7 @@ static int	get_next_pos(t_node **src, int index)
 	return (j * - 1);
 }
 
-/* Pushed next desired index and one index below if possible */
+/* Push next desired index and one index below if possible */
 static int	smart_push(t_node **a, t_node **b, int next_pos, int lower_idx)
 {
 	int	i;

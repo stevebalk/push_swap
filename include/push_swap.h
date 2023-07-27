@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/26 18:10:43 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/27 15:02:29 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ int		*create_sorted_array(int size, int *list);
 
 /* Sorting functions */
 
+int		get_next_pos(t_node **src, int index);
 void	quicksort(int arr[], int low, int high);
+void	sort_three(t_node **a);
+void	sort_five(t_node **a, t_node **b);
 void	quicksort_stack(t_node **src, t_node **dst, int size, int chunks);
 void	insertion_sort(t_node **a, t_node **b);
 
@@ -64,6 +67,7 @@ t_node	*get_last_node(t_node *head);
 int		copy_list_to_array(t_node *src, int **dst);
 void	free_list(t_node **head);
 int		get_list_size(t_node *stack);
+int		is_list_n_sorted(t_node **stack, int len, int dir);
 
 /* Push swap functions */
 

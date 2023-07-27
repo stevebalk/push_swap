@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:43:01 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/26 18:19:26 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/27 12:12:57 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,22 @@ int	main(int argc, char **argv)
 	a = create_stack(argc, nums, sorted_nums);
 	is_stack_unsorted(&a);
 	// debug_print_stack(a, "A");
-	quicksort_stack(&a, &b, argc, 10);
-	insertion_sort(&a, &b);
+	if (argc == 3)
+		sort_three(&a);
+	else if (argc == 5)
+		sort_five(&a, &b);
+	else if (argc == 100)
+	{
+		quicksort_stack(&a, &b, argc, 10);
+		insertion_sort(&a, &b);
+	}
+	else if (argc == 500)
+	{
+		quicksort_stack(&a, &b, argc, 20);
+		insertion_sort(&a, &b);
+	}
+
+	
 	// printf("Median: %d\n", get_chunk_median(a, argc));
 	// debug_print_stack(a, "A");
 	// debug_print_stack(b, "B");
