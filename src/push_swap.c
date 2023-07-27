@@ -6,19 +6,34 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:43:01 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/27 12:12:57 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/27 18:40:41 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-// static void print_array(int arr[], int size)
-// {
-// 	printf("Array: \n");
-// 	for (int i = 0; i < size; i++)
-// 		printf("%i ,", arr[i]);
-// 	printf("\n");
-// }
+void	sort(t_node **a, t_node **b, int stacksize)
+{
+	if (stacksize == 2 && !is_list_n_sorted(a, 2, 1))
+		sa(a);
+	else if (stacksize == 3)
+		sort_three(a);
+	else if (stacksize == 5)
+		sort_five(a, b);
+	else
+	{
+		if (stacksize == 100)
+			quicksort_stack(a, b, stacksize, 100);
+		else if (stacksize == 500)
+			quicksort_stack(a, b, stacksize, 20);
+		else if (stacksize < 100)
+			quicksort_stack(a, b, stacksize, 2);
+		else
+			quicksort_stack(a, b, stacksize, 20);
+		insertion_sort(a, b);
+	}
+}
+
 
 int	main(int argc, char **argv)
 {
@@ -31,33 +46,14 @@ int	main(int argc, char **argv)
 	argc--;
 	argv++;
 	input_check(argv, argc);
-	nums = convert_to_int_array(argc, argv);
-	// print_array(nums, argc);
-	sorted_nums = create_sorted_array(argc, nums);
-	// quicksort(nums, 0, argc - 1);
-	// print_array(nums, argc);
+	nums = str_to_int_array(argc, argv);
+	sorted_nums = list_to_sorted_array(argc, nums);
 	a = create_stack(argc, nums, sorted_nums);
 	is_stack_unsorted(&a);
-	// debug_print_stack(a, "A");
-	if (argc == 3)
-		sort_three(&a);
-	else if (argc == 5)
-		sort_five(&a, &b);
-	else if (argc == 100)
-	{
-		quicksort_stack(&a, &b, argc, 10);
-		insertion_sort(&a, &b);
-	}
-	else if (argc == 500)
-	{
-		quicksort_stack(&a, &b, argc, 20);
-		insertion_sort(&a, &b);
-	}
-
+	sort(&a, &b, argc);
 	
-	// printf("Median: %d\n", get_chunk_median(a, argc));
-	// debug_print_stack(a, "A");
-	// debug_print_stack(b, "B");
+	free(nums);
+	free(sorted_nums);
 	free_list(&a);
 	free_list(&b);
 	return (0);

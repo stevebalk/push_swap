@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/27 15:02:29 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/27 18:39:27 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	is_stack_unsorted(t_node **head);
 
 /* index functions */
 
-int		*convert_to_int_array(int size, char **list);
-int		*create_sorted_array(int size, int *list);
+int		*str_to_int_array(int size, char **list);
+int		*list_to_sorted_array(int size, int *list);
 
 /* Sorting functions */
 

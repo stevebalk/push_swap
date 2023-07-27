@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:53:50 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/27 15:02:18 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/27 18:52:44 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	get_next_pos(t_node **src, int index)
 			break ;
 		j++;
 	}
+	free(array);
 	if (i <= j + 1)
 		return (i);
 	return (j * - 1);

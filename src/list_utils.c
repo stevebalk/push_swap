@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/26 12:44:11 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/27 18:46:05 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	free_list(t_node **head)
 {
-	t_node	*cur_node;
+	t_node	*next_node;
 
 	while (*head != NULL)
 	{
-		cur_node = *head;
-		*head = cur_node->next;
-		free(cur_node);
+		next_node = (*head)->next;
+		free(*head);
+		*head = next_node;
 	}
 	*head = NULL;
 }

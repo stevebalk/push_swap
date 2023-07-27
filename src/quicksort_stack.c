@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:53:40 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/26 18:26:51 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/27 18:03:50 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	get_chunk_median(t_node *stack, int chunksize)
 
 static int	sorting_logic(t_node **a, t_node **b, t_qsdata data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if ((*a)->index >= data.min && (*a)->index <= data.median)
@@ -89,20 +89,25 @@ static int	sorting_logic(t_node **a, t_node **b, t_qsdata data)
 void	quicksort_stack(t_node **a, t_node **b, int size, int chunks)
 {
 	int	chunksize;
-	int i;
+	int	i;
+	int	j;
 	t_qsdata data;
 
-	chunksize = size / chunks;
 	i = 0;
+	j = 0;
+	chunksize = (size / chunks) * 2;
+	if (size % chunks != 0)
+		chunksize += size % chunks;
 
-	while (chunks)
+	while (j < chunks)
 	{
 		data.min = get_chunk_min_index(*a);
-		data.max = get_chunk_max_index(*a, chunksize * 2);
-		data.median = get_chunk_median(*a, chunksize * 2);
-		while (i < chunksize * 2)
+		data.max = get_chunk_max_index(*a, chunksize);
+		data.median = get_chunk_median(*a, chunksize);
+		while (i < chunksize)
 			i += sorting_logic(a, b, data);
 		i = 0;
-		chunks -= 2;
+		chunksize = (size / chunks) * 2;
+		j += 2;
 	}
 }

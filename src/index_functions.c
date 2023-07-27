@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 15:31:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/10 15:32:31 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/27 18:39:47 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	sort_int_array(int **array, int size)
 	}
 }
 
-int	*convert_to_int_array(int size, char **list)
+int	*str_to_int_array(int size, char **list)
 {
 	int	*ret;
 	int	i;
@@ -64,7 +64,7 @@ int	*convert_to_int_array(int size, char **list)
 	return (ret);
 }
 
-int	*create_sorted_array(int size, int *list)
+int	*list_to_sorted_array(int size, int *list)
 {
 	int	*sorted_lst;
 
