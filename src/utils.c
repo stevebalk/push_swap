@@ -6,13 +6,11 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:25:29 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 15:56:03 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:23:37 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 int	ft_abs(int nb)
 {
@@ -25,6 +23,8 @@ int	is_number(char *str)
 {
 	if (*str == '-' || *str == '+')
 		str++;
+	if (*str == '\0')
+		return (0);
 	while (*str)
 	{
 		if (!is_digit(*str))

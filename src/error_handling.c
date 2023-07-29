@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:05 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 16:40:13 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:12:32 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,9 @@ void	error_check(char **str, int size)
 {
 	if (!is_valid_input(str, size) || is_dup(str, size))
 	{
-		putstr("Error\n");
-		exit (1);
+		write(2, "Error", 5);
+		write(2, "\n", 1);
+		exit (2);
 	}
 	if (size <= 1 || is_sorted(str, size))
 		exit (0);
@@ -95,5 +96,7 @@ void	error_free(t_node **a, t_node **b, int *arr1, int *arr2)
 		free(arr1);
 	if (arr2)
 		free(arr2);
-	exit(1);
+	write(2, "Error", 5);
+	write(2, "\n", 1);
+	exit(2);
 }

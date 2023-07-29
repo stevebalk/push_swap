@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:25 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 14:34:31 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:49:30 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	push(t_node **src, t_node **dst)
 {
 	t_node	*src_head;
+
 	if (*dst == NULL)
 		*dst = NULL;
 	src_head = *src;

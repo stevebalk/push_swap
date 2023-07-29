@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:42:12 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 15:42:32 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:21:01 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ int	copy_list_to_array(t_node *src, int **dst)
 		src = src->next;
 		i++;
 	}
-
-	return list_size;
+	return (list_size);
 }

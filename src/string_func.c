@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:45:26 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 15:57:45 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:23:57 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_digit(char ch)
 
 void	putstr(char	*str)
 {
-	while(*str)
+	while (*str)
 	{
 		write(1, str, 1);
 		str++;

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:43:01 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 16:26:58 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:20:39 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	sort(t_node **a, t_node **b, int stacksize)
 	free_list(a);
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_node	*a;
@@ -48,6 +47,5 @@ int	main(int argc, char **argv)
 	error_check(argv, argc);
 	create_stack(&a, argv, argc);
 	sort(&a, &b, argc);
-
 	return (0);
 }

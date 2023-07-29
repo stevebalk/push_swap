@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:53:40 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 15:53:54 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:20:23 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* Returns the smallest index value from the given list */
 static int	get_chunk_min_index(t_node *stack)
 {
-	int min_value;
+	int	min_value;
 
 	min_value = stack->index;
 	while (stack != NULL)
@@ -90,17 +90,16 @@ static int	sorting_logic(t_node **a, t_node **b, t_qsdata data)
 /* Sorts n chunks from a to b, from small to high */
 void	quicksort_stack(t_node **a, t_node **b, int size, int chunks)
 {
-	int	chunksize;
-	int	i;
-	int	j;
-	t_qsdata data;
+	int			chunksize;
+	int			i;
+	int			j;
+	t_qsdata	data;
 
 	i = 0;
 	j = 0;
 	chunksize = (size / chunks) * 2;
 	if (size % chunks != 0)
 		chunksize += size % chunks;
-
 	while (j < chunks)
 	{
 		data.min = get_chunk_min_index(*a);

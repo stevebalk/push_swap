@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 14:26:20 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 16:02:51 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:51:18 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	set_index(t_node **a, int *arr, int size)
 {
 	int		i;
 	t_node	*cur_node;
-	
+
 	i = 0;
 	quicksort(arr, 0, size - 1);
 	cur_node = *a;

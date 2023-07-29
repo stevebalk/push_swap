@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 16:26:26 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:51:50 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# include <stdio.h>
+// # include <stdio.h>
 
 typedef struct s_node
 {
@@ -50,8 +50,7 @@ void	error_free(t_node **a, t_node **b, int *arr1, int *arr2);
 
 /* index functions */
 
-int			*str_to_int_array(t_node **a, char **arr, int size);
-// int		*list_to_sorted_array(int size, int *list);
+int		*str_to_int_array(t_node **a, char **arr, int size);
 
 /* Sorting functions */
 
@@ -65,10 +64,7 @@ void	insertion_sort(t_node **a, t_node **b);
 /* List functions */
 
 t_node	*create_node(int value);
-// t_node	*create_node(int value, int *sorted_array, int size);
-// t_node	*create_stack(int size, int *nums, int *sorted_nums);
 void	create_stack(t_node **a, char **arr, int size);
-// t_node	*get_last_node(t_node *head);
 int		copy_list_to_array(t_node *src, int **dst);
 void	free_list(t_node **head);
 int		get_list_size(t_node *stack);

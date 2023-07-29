@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:35:14 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 15:51:17 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:47:10 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	last_rotate(t_node **a)
 	while (cur_node)
 	{
 		if (cur_node->index == 0)
-			break;
+			break ;
 		first_index_pos++;
 		cur_node = cur_node->next;
 	}
@@ -32,11 +32,13 @@ static void	last_rotate(t_node **a)
 		while (first_index_pos--)
 			ra(a);
 	else if (first_index_pos != 0)
+	{
 		while (5 - first_index_pos)
 		{
 			rra(a);
 			first_index_pos++;
 		}
+	}
 }
 
 /* Pushes the the top node of stack b to it's final

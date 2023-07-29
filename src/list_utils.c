@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 15:44:02 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:23:13 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_node	*create_node(int value)
 
 int	get_list_size(t_node *stack)
 {
-	int	size;
+	int		size;
 	t_node	*cur_node;
 
 	size = 0;
@@ -61,6 +61,7 @@ int	is_list_n_sorted(t_node **stack, int len, int dir)
 
 	cur_node = *stack;
 	if (dir == 1)
+	{
 		while (cur_node && cur_node->next && len)
 		{
 			if (cur_node->index > cur_node->next->index)
@@ -68,6 +69,7 @@ int	is_list_n_sorted(t_node **stack, int len, int dir)
 			len--;
 			cur_node = cur_node->next;
 		}
+	}
 	else if (dir == -1)
 	{
 		while (cur_node && cur_node->next && len)

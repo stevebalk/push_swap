@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:49:28 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 14:34:51 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:51:38 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	rra(t_node **a)
 	{
 		reverse_rotate(a);
 		putstr("rra\n");
-	} 
+	}
 }
 
 void	rrb(t_node **b)
@@ -54,7 +54,7 @@ void	rrb(t_node **b)
 
 void	rrr(t_node **a, t_node **b)
 {
-		reverse_rotate(a);
-		reverse_rotate(b);
-		putstr("rrr\n");
+	reverse_rotate(a);
+	reverse_rotate(b);
+	putstr("rrr\n");
 }

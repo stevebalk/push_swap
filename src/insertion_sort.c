@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:53:50 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/27 18:52:44 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 18:50:16 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_next_pos(t_node **src, int index)
 	int	i;
 	int	j;
 	int	size;
-	int *array;
+	int	*array;
 
 	i = 0;
 	j = 1;
@@ -37,7 +37,7 @@ int	get_next_pos(t_node **src, int index)
 	free(array);
 	if (i <= j + 1)
 		return (i);
-	return (j * - 1);
+	return (j * -1);
 }
 
 /* Push next desired index and one index below if possible */
@@ -79,7 +79,6 @@ void	insertion_sort(t_node **a, t_node **b)
 	size = copy_list_to_array(*b, &sort_arr);
 	quicksort(sort_arr, 0, size - 1);
 	offset = 0;
-
 	while (*b)
 	{
 		next_pos = get_next_pos(b, sort_arr[size - 1 - offset]);
