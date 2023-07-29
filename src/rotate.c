@@ -6,11 +6,20 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:06:33 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/26 17:25:46 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 15:44:19 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
+
+static t_node	*get_last_node(t_node *node)
+{
+	if (node == NULL)
+		return (NULL);
+	while (node->next != NULL)
+		node = node->next;
+	return (node);
+}
 
 void	rotate(t_node **head)
 {

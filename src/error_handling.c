@@ -6,67 +6,94 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:05 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/27 12:35:44 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 16:40:13 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
-void	is_stack_unsorted(t_node **head)
+/* Checks for duplicates */
+static int	is_dup(char **str, int size)
 {
-	t_node	*cur_node;
+	int	*nums;
+	int	i;
 
-	cur_node = *head;
-	while (cur_node->next != NULL)
+	i = 0;
+	nums = str_to_int_array(NULL, str, size);
+	quicksort(nums, 0, size - 1);
+	while (i < size - 1)
 	{
-		if (cur_node->value > cur_node->next->value)
-			return ;
-		cur_node = cur_node->next;
+		if (nums[i] == nums[i + 1])
+		{
+			free(nums);
+			return (1);
+		}
+		i++;
 	}
-	free_list(head);
-	exit (0);
+	free(nums);
+	return (0);
 }
 
-static int	is_number(char *str)
+/* Checks if input is sorted */
+static int	is_sorted(char **str, int size)
 {
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str)
+	int	*nums;
+	int	i;
+
+	i = 0;
+	nums = str_to_int_array(NULL, str, size);
+	while (i < size - 1)
 	{
-		if (!is_digit(*str))
+		if (nums[i] > nums[i + 1])
+		{
+			free(nums);
 			return (0);
-		str++;
+		}
+		i++;
 	}
+	free(nums);
 	return (1);
 }
 
-static int is_int(char *str)
+/* Checks if only valid input was given*/
+static int	is_valid_input(char **str, int size)
 {
-	ssize_t	nbr;
-
-	if (!is_number(str))
-		return (0);
-	nbr = ft_atoi(str);
-	if (nbr < INT_MIN || nbr > INT_MAX)
-		return (0);
-	return (1);
-}
-
-void	input_check(char **str, int size)
-{
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
 	{
 		if (*str == NULL || !is_int(*str))
 		{
-			putstr("Error\n");
-			exit (1);
+			return (0);
 		}
 		str++;
 		i++;
 	}
-	if (size <= 1)
+	return (1);
+}
+
+void	error_check(char **str, int size)
+{
+	if (!is_valid_input(str, size) || is_dup(str, size))
+	{
+		putstr("Error\n");
+		exit (1);
+	}
+	if (size <= 1 || is_sorted(str, size))
 		exit (0);
+}
+
+/* Free given lists or arrays and exit with 1 */
+void	error_free(t_node **a, t_node **b, int *arr1, int *arr2)
+{
+	if (a)
+		free_list(a);
+	if (b)
+		free_list(b);
+	if (arr1)
+		free(arr1);
+	if (arr2)
+		free(arr2);
+	exit(1);
 }

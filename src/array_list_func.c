@@ -1,47 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   array_list_func.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 17:25:29 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 15:56:03 by sbalk            ###   ########.fr       */
+/*   Created: 2023/07/29 15:42:12 by sbalk             #+#    #+#             */
+/*   Updated: 2023/07/29 15:42:32 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-
-int	ft_abs(int nb)
+/* Copies a linked list to an array and returns the size */
+int	copy_list_to_array(t_node *src, int **dst)
 {
-	if (nb < 0)
-		return (nb * -1);
-	return (nb);
-}
+	int	list_size;
+	int	i;
 
-int	is_number(char *str)
-{
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str)
+	list_size = get_list_size(src);
+	*dst = malloc(list_size * sizeof(int));
+	if (*dst == NULL)
+		exit(1);
+	i = 0;
+	while (src)
 	{
-		if (!is_digit(*str))
-			return (0);
-		str++;
+		(*dst)[i] = src->index;
+		src = src->next;
+		i++;
 	}
-	return (1);
-}
 
-int	is_int(char *str)
-{
-	ssize_t	nbr;
-
-	if (!is_number(str))
-		return (0);
-	nbr = ft_atoi(str);
-	if (nbr < INT_MIN || nbr > INT_MAX)
-		return (0);
-	return (1);
+	return list_size;
 }

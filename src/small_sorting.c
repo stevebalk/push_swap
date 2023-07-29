@@ -6,12 +6,14 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:35:14 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/27 16:34:46 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 15:51:17 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* Rotates the stack to it's final positon with the
+least amount of moves */
 static void	last_rotate(t_node **a)
 {
 	t_node	*cur_node;
@@ -37,6 +39,8 @@ static void	last_rotate(t_node **a)
 		}
 }
 
+/* Pushes the the top node of stack b to it's final
+position with the least amount of moves */
 static void	smart_insert(t_node **a, t_node **b)
 {
 	int	next_pos;
@@ -90,6 +94,8 @@ void	sort_three(t_node **a)
 		rra(a);
 }
 
+/* Inserts the last two nodes from stack b to
+theit final positon in stack a */
 void	insert_two(t_node **a, t_node **b)
 {
 	if ((*b)->index < (*b)->next->index)

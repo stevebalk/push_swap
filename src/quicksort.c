@@ -6,9 +6,11 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 11:22:08 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/25 17:52:21 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 14:34:47 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 void swap(int *a, int *b) {
 	int temp = *a;

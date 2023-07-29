@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:53:40 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/27 18:03:50 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 15:53:54 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	get_chunk_max_index(t_node *stack, int chunksize)
 	return (ret);
 }
 
-
+/* Calculates and returns the median index of a given chunk */
 static int	get_chunk_median(t_node *stack, int chunksize)
 {
 	int	*sorted_values;
@@ -57,6 +57,7 @@ static int	get_chunk_median(t_node *stack, int chunksize)
 	return (ret);
 }
 
+/* Sorting logic for stack quicksort */
 static int	sorting_logic(t_node **a, t_node **b, t_qsdata data)
 {
 	int	i;
@@ -78,7 +79,7 @@ static int	sorting_logic(t_node **a, t_node **b, t_qsdata data)
 	}
 	else
 	{
-		if (*b && (*b)->index > data.median)
+		if (*b && (*b)->next && (*b)->index > data.median)
 			rr(a, b);
 		else
 			ra(a);
@@ -86,6 +87,7 @@ static int	sorting_logic(t_node **a, t_node **b, t_qsdata data)
 	return (i);
 }
 
+/* Sorts n chunks from a to b, from small to high */
 void	quicksort_stack(t_node **a, t_node **b, int size, int chunks)
 {
 	int	chunksize;

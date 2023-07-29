@@ -6,11 +6,11 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:25 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/26 16:21:34 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 14:34:31 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 static void	push(t_node **src, t_node **dst)
 {

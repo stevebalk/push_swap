@@ -6,11 +6,11 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/27 18:46:05 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/07/29 15:44:02 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 void	free_list(t_node **head)
 {
@@ -25,64 +25,17 @@ void	free_list(t_node **head)
 	*head = NULL;
 }
 
-t_node	*create_node(int value, int *sorted_array, int size)
+t_node	*create_node(int value)
 {
-	int i;
-
-	i = 0;
 	t_node	*new_node;
 
 	new_node = malloc(1 * sizeof(t_node));
 	if (new_node == NULL)
 		return (NULL);
 	new_node->value = value;
-	while (i < size)
-	{
-		if (sorted_array[i] == new_node->value)
-		{
-			new_node->index = i;
-			break;
-		}
-		i++;
-	}
+	new_node->index = 0;
 	new_node->next = NULL;
 	return (new_node);
-}
-
-t_node	*create_stack(int size, int *nums, int *sorted_nums)
-{
-	t_node	*head_node;
-	t_node	*cur_node;
-	t_node	*new_node;
-	int		i;
-
-	i = 1;
-	head_node = create_node(nums[0], sorted_nums, size);
-	if (head_node == NULL)
-		exit (1);
-	cur_node = head_node;
-	while (i < size)
-	{
-		new_node = create_node(nums[i], sorted_nums, size);
-		if (new_node == NULL)
-		{
-			free_list(&head_node);
-			exit (1);
-		}
-		cur_node->next = new_node;
-		cur_node = new_node;
-		i++;
-	}
-	return (head_node);
-}
-
-t_node	*get_last_node(t_node *node)
-{
-	if (node == NULL)
-		return (NULL);
-	while (node->next != NULL)
-		node = node->next;
-	return (node);
 }
 
 int	get_list_size(t_node *stack)
@@ -100,36 +53,42 @@ int	get_list_size(t_node *stack)
 	return (size);
 }
 
-/* Copies a linked list to an array and returns the size */
-int	copy_list_to_array(t_node *src, int **dst)
+/* Checks if list is sorted for n elements.
+dir 1 == low to high, dir -1 high to low */
+int	is_list_n_sorted(t_node **stack, int len, int dir)
 {
-	int	list_size;
-	int	i;
+	t_node	*cur_node;
 
-	list_size = get_list_size(src);
-	*dst = malloc(list_size * sizeof(int));
-	if (*dst == NULL)
-		exit(1);
-	i = 0;
-	while (src)
+	cur_node = *stack;
+	if (dir == 1)
+		while (cur_node && cur_node->next && len)
+		{
+			if (cur_node->index > cur_node->next->index)
+				return (0);
+			len--;
+			cur_node = cur_node->next;
+		}
+	else if (dir == -1)
 	{
-		(*dst)[i] = src->index;
-		src = src->next;
-		i++;
+		while (cur_node && cur_node->next && len)
+		{
+			if (cur_node->index < cur_node->next->index)
+				return (0);
+			len--;
+			cur_node = cur_node->next;
+		}
 	}
-
-	return list_size;
+	return (1);
 }
 
-
-void	debug_print_stack(t_node *stack, char *name)
-{
-	printf("-----------\n");
-	printf("Stack %s\n", name);
-	while (stack != NULL)
-	{
-		printf("%i, index: %i\n", stack->value, stack->index);
-		stack = stack->next;
-	}
-	printf("-----------\n");
-}
+// void	debug_print_stack(t_node *stack, char *name)
+// {
+// 	printf("-----------\n");
+// 	printf("Stack %s\n", name);
+// 	while (stack != NULL)
+// 	{
+// 		printf("%i, index: %i\n", stack->value, stack->index);
+// 		stack = stack->next;
+// 	}
+// 	printf("-----------\n");
+// }
