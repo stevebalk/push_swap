@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:05 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 17:19:00 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/03 16:31:59 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ void	error_check(char **str, int size)
 	{
 		write(2, "Error", 5);
 		write(2, "\n", 1);
-		exit (2);
+		exit (EXIT_FAILURE);
 	}
 	if (size <= 1 || is_sorted(str, size))
-		exit (0);
+		exit (EXIT_SUCCESS);
 }
 
 /* Free given lists or arrays and exit with 1 */

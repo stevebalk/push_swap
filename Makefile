@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
+#    By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 15:43:43 by sbalk             #+#    #+#              #
-#    Updated: 2023/08/03 12:54:58 by sbalk            ###   ########.fr        #
+#    Updated: 2023/08/03 16:18:15 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,12 @@ CHECKER		= checker
 LIB_DIR		= libft/
 LIB_NAME	= libft.a
 CC			= gcc
-CFLAGS		= -Werror -Wall -Wextra
+CFLAGS		= -Werror -Wall -Wextra -g
 RM			= rm
 SRC_DIR		= src/
 OBJ_DIR		= obj/
 AR			= ar rcs
-INCLUDE		= -I include
+INCLUDE		= -I include -I libft/include
 
 # Colors
 
@@ -59,8 +59,6 @@ CHECKER_OBJ		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(CHECKER_FILES)))
 
 DEBUG_SRC		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 BEBUG_OBJ		=	$(addprefix $(DOBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-
-OBJF		= .cache_exists
 
 all:		$(NAME)
 
@@ -105,8 +103,8 @@ re:			fclean all
 norm:
 			@norminette $(SRC) include/$(NAME).h| grep -v Norme -B1 || true
 
-debug:		$(BEBUG_OBJ)
-			@$(CC) $(CFLAGS) $(BEBUG_OBJ) -L $(LIB_DIR) -lft -o $(NAME) -g
+debug:		$(DEBUG_OBJ)
+			@$(CC) $(CFLAGS) $(DEBUG_OBJ) -L $(LIB_DIR) -lft -o $(NAME) -g
 			@echo "$(GREEN)Created $(NAME) DEBUG BUILD!$(DEF_COLOR)"
 
 debugre:	fclean debug
