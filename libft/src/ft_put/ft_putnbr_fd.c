@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_func.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/29 15:45:26 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 17:02:23 by sbalk            ###   ########.fr       */
+/*   Created: 2022/12/14 16:02:27 by sbalk             #+#    #+#             */
+/*   Updated: 2023/05/16 19:33:27 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	putstr(char	*str)
+void	ft_putnbr_fd(int n, int fd)
 {
-	while (*str)
+	int	sign;
+
+	sign = 1;
+	if (n < 0)
 	{
-		write(1, str, 1);
-		str++;
+		ft_putchar_fd('-', fd);
+		sign = -1;
 	}
+	if (n / 10)
+	{
+		ft_putnbr_fd(n / 10 * sign, fd);
+	}
+	ft_putchar_fd(n % 10 * sign + '0', fd);
 }

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_func.c                                      :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/29 15:45:26 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 17:02:23 by sbalk            ###   ########.fr       */
+/*   Created: 2023/05/17 12:50:20 by sbalk             #+#    #+#             */
+/*   Updated: 2023/07/31 12:04:10 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	putstr(char	*str)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	while (*str)
+	while (lst)
 	{
-		write(1, str, 1);
-		str++;
+		f(lst->content);
+		lst = lst->next;
 	}
 }

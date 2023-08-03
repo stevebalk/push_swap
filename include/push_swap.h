@@ -6,17 +6,19 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 18:51:50 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/02 18:13:50 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <libft.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-// # include <stdio.h>
+# include "printf.h"
+# include "libft.h"
 
 typedef struct s_node
 {
@@ -34,12 +36,7 @@ typedef struct s_qsdata
 
 /* Utility */
 
-int		is_digit(char ch);
 void	putstr(char	*str);
-ssize_t	ft_atoi(const char *str);
-int		ft_abs(int nb);
-int		is_number(char *str);
-int		is_int(char *str);
 
 // void	debug_print_stack(t_node *stack, char *name); // DELETE LATER!!!
 

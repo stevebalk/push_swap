@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_func.c                                      :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/29 15:45:26 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 17:02:23 by sbalk            ###   ########.fr       */
+/*   Created: 2023/05/16 18:38:03 by sbalk             #+#    #+#             */
+/*   Updated: 2023/05/17 16:49:57 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	putstr(char	*str)
+int	ft_lstsize(t_list *lst)
 {
-	while (*str)
+	int	size;
+
+	size = 0;
+	while (lst != NULL)
 	{
-		write(1, str, 1);
-		str++;
+		lst = lst->next;
+		size++;
 	}
+	return (size);
 }

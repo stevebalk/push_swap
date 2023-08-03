@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_func.c                                      :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/29 15:45:26 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 17:02:23 by sbalk            ###   ########.fr       */
+/*   Created: 2022/12/14 15:59:34 by sbalk             #+#    #+#             */
+/*   Updated: 2023/05/16 17:41:50 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	putstr(char	*str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	while (*str)
+	char	*str;
+	size_t	i;
+
+	str = ft_strdup(s);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (str[i])
 	{
-		write(1, str, 1);
-		str++;
+		str[i] = (*f)(i, str[i]);
+		i++;
 	}
+	return (str);
 }

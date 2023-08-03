@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_func.c                                      :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/29 15:45:26 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 17:02:23 by sbalk            ###   ########.fr       */
+/*   Created: 2022/12/16 14:45:31 by sbalk             #+#    #+#             */
+/*   Updated: 2023/05/15 17:33:17 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	putstr(char	*str)
+char	*ft_strchr(const char *s, int c)
 {
-	while (*str)
+	char	*p;
+
+	p = (char *) s;
+	while (*p)
 	{
-		write(1, str, 1);
-		str++;
+		if (*p == (char) c)
+			return (p);
+		p++;
 	}
+	if ((char) c == '\0')
+		return (p);
+	return (NULL);
 }

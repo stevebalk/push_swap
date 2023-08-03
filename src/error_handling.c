@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:05 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 18:12:32 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/02 17:19:00 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	is_valid_input(char **str, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (*str == NULL || !is_int(*str))
+		if (*str == NULL || !ft_is_str_int(*str))
 		{
 			return (0);
 		}

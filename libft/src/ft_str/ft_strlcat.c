@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_func.c                                      :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/29 15:45:26 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 17:02:23 by sbalk            ###   ########.fr       */
+/*   Created: 2022/12/27 16:17:34 by sbalk             #+#    #+#             */
+/*   Updated: 2023/05/12 15:17:54 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	putstr(char	*str)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	while (*str)
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	while (*dst && i < dstsize)
 	{
-		write(1, str, 1);
-		str++;
+		++dst;
+		++i;
 	}
+	len = ft_strlcpy(dst, src, dstsize - i);
+	return (len + i);
 }

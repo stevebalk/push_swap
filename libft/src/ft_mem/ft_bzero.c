@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_func.c                                      :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/29 15:45:26 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 17:02:23 by sbalk            ###   ########.fr       */
+/*   Created: 2022/12/12 16:59:17 by sbalk             #+#    #+#             */
+/*   Updated: 2022/12/25 15:12:07 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	putstr(char	*str)
+void	ft_bzero(void *s, size_t size)
 {
-	while (*str)
+	unsigned char	*temp;
+
+	temp = (unsigned char *)s;
+	while (size-- > 0)
 	{
-		write(1, str, 1);
-		str++;
+		*temp = 0;
+		temp++;
 	}
+	s = temp;
 }

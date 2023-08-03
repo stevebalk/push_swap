@@ -1,47 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_atolli.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 17:25:29 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 18:23:37 by sbalk            ###   ########.fr       */
+/*   Created: 2023/08/02 17:01:33 by sbalk             #+#    #+#             */
+/*   Updated: 2023/08/02 17:30:41 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	ft_abs(int nb)
+ssize_t	ft_atolli(const char *str)
 {
-	if (nb < 0)
-		return (nb * -1);
-	return (nb);
-}
+	ssize_t	nb;
+	int		sign;
 
-int	is_number(char *str)
-{
-	if (*str == '-' || *str == '+')
-		str++;
-	if (*str == '\0')
-		return (0);
-	while (*str)
+	nb = 0;
+	sign = 1;
+	while (ft_is_space(str))
 	{
-		if (!is_digit(*str))
-			return (0);
 		str++;
 	}
-	return (1);
-}
-
-int	is_int(char *str)
-{
-	ssize_t	nbr;
-
-	if (!is_number(str))
-		return (0);
-	nbr = ft_atoi(str);
-	if (nbr < INT_MIN || nbr > INT_MAX)
-		return (0);
-	return (1);
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9' && *str != '\0')
+	{
+		nb *= 10;
+		nb += *str - '0';
+		str++;
+	}
+	return (nb * sign);
 }

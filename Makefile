@@ -6,17 +6,19 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 15:43:43 by sbalk             #+#    #+#              #
-#    Updated: 2023/07/29 15:57:18 by sbalk            ###   ########.fr        #
+#    Updated: 2023/08/03 12:54:58 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= push_swap
+CHECKER		= checker
+LIB_DIR		= libft/
+LIB_NAME	= libft.a
 CC			= gcc
 CFLAGS		= -Werror -Wall -Wextra
 RM			= rm
 SRC_DIR		= src/
 OBJ_DIR		= obj/
-DOBJ_DIR	= dobj/
 AR			= ar rcs
 INCLUDE		= -I include
 
@@ -38,7 +40,6 @@ SRC_FILES	=	error_handling \
 				reverse_rotate \
 				rotate \
 				swap \
-				utils \
 				quicksort \
 				small_sorting \
 				quicksort_stack \
@@ -47,18 +48,25 @@ SRC_FILES	=	error_handling \
 				create_stack \
 				string_func \
 				array_list_func
-				
 
-SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ	 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-DOBJ	 	= 	$(addprefix $(DOBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+CHECKER_FILES	= checker
+
+SRC				=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ				=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+
+CHECKER_SRC		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(CHECKER_FILES)))
+CHECKER_OBJ		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(CHECKER_FILES)))
+
+DEBUG_SRC		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+BEBUG_OBJ		=	$(addprefix $(DOBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 OBJF		= .cache_exists
 
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-			@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+			@make -C $(LIB_DIR)
+			@$(CC) $(CFLAGS) $(OBJ) -L $(LIB_DIR) -lft -o $(NAME)
 			@echo "$(GREEN)Created $(NAME)!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
@@ -67,19 +75,28 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(DOBJ_DIR)%.o: $(SRC_DIR)%.c
-			@mkdir -p $(DOBJ_DIR)
+			@mkdir -p $(OBJ_DIR)
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@ -g
 
-bonus:		$(NAME)
+$(CHECKER_OBJ_DIR)%.o: $(SRC_DIR)%.c
+			@mkdir -p $(CHECKER_OBJ_DIR)
+			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+checker:	$(CHECKER_OBJ)
+			@$(CC) $(CFLAGS) $(CHECKER_OBJ) -o $(CHECKER)
+			@echo "$(GREEN)Created $(CHECKER)!$(DEF_COLOR)"
 
 clean:
 			@$(RM) -rf $(OBJ_DIR)
-			@$(RM) -rf $(DOBJ_DIR)
+			@make clean -C $(LIB_DIR)
 			@echo "$(BLUE)$(NAME) object files cleaned!$(DEF_COLOR)"
 
 fclean:		clean
+			@make fclean -C $(LIB_DIR)
 			@$(RM) -f $(NAME)
+			@$(RM) -f $(CHECKER)
 			@echo "$(CYAN)$(NAME) executable files cleaned!$(DEF_COLOR)"
 
 re:			fclean all
@@ -88,8 +105,8 @@ re:			fclean all
 norm:
 			@norminette $(SRC) include/$(NAME).h| grep -v Norme -B1 || true
 
-debug:		$(DOBJ)
-			@$(CC) $(CFLAGS) $(DOBJ) -o $(NAME) -g
+debug:		$(BEBUG_OBJ)
+			@$(CC) $(CFLAGS) $(BEBUG_OBJ) -L $(LIB_DIR) -lft -o $(NAME) -g
 			@echo "$(GREEN)Created $(NAME) DEBUG BUILD!$(DEF_COLOR)"
 
 debugre:	fclean debug
@@ -100,4 +117,4 @@ git:		fclean
 			@git add *
 			@git status
 
-.PHONY:		all clean fclean re norm debug debugre git
+.PHONY:		all clean fclean re norm debug debugre git checker

@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_func.c                                      :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/29 15:45:26 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 17:02:23 by sbalk            ###   ########.fr       */
+/*   Created: 2023/01/05 13:04:02 by sbalk             #+#    #+#             */
+/*   Updated: 2023/01/06 17:16:29 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	putstr(char	*str)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	while (*str)
+	size_t	i;
+
+	i = 0;
+	while (i + 1 < size && src[i] != '\0')
 	{
-		write(1, str, 1);
-		str++;
+		dst[i] = src[i];
+		i++;
 	}
+	if (size > 0)
+		dst[i] = '\0';
+	return (ft_strlen(src));
 }
