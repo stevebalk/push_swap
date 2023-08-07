@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 16:02:44 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 18:35:33 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_pslist	*create_node(int value)
 
 int	get_list_size(t_pslist *stack)
 {
-	int		size;
+	int			size;
 	t_pslist	*cur_node;
 
 	size = 0;
@@ -82,17 +82,3 @@ int	is_list_n_sorted(t_pslist **stack, int len, int dir)
 	}
 	return (1);
 }
-
-
-
-// void	debug_print_stack(t_pslist *stack, char *name)
-// {
-// 	printf("-----------\n");
-// 	printf("Stack %s\n", name);
-// 	while (stack != NULL)
-// 	{
-// 		printf("%i, index: %i\n", stack->value, stack->index);
-// 		stack = stack->next;
-// 	}
-// 	printf("-----------\n");
-// }

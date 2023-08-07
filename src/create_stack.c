@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 14:26:20 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:55:26 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 18:34:18 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	*str_to_int_array(t_pslist **a, char **arr, int size)
 
 static void	set_index(t_pslist **a, int *arr, int size)
 {
-	int		i;
+	int			i;
 	t_pslist	*cur_node;
 
 	i = 0;
@@ -53,9 +53,9 @@ static void	set_index(t_pslist **a, int *arr, int size)
 
 static void	multiple_input_create(t_pslist **a, char **arr, int size)
 {
-	int		*num_arr;
+	int			*num_arr;
 	t_pslist	*head_node;
-	int		i;
+	int			i;
 
 	num_arr = str_to_int_array(a, arr, size);
 	i = 0;
@@ -90,7 +90,7 @@ static int	single_input_create(t_pslist **a, char *arr)
 	size = str_arr_len(input);
 	multiple_input_create(a, input, size);
 	ft_free_2darray((void **) input, size + 1);
-	return size;
+	return (size);
 }
 
 int	create_stack(t_pslist **a, char **arr, int size)
@@ -99,5 +99,5 @@ int	create_stack(t_pslist **a, char **arr, int size)
 		size = single_input_create(a, arr[0]);
 	else
 		multiple_input_create(a, arr, size);
-	return size;
+	return (size);
 }

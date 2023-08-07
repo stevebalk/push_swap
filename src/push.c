@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:25 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:31:50 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 17:57:57 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,22 @@ static void	push(t_pslist **src, t_pslist **dst)
 	*dst = src_head;
 }
 
-void	pa(t_pslist **a, t_pslist **b)
+void	pa(t_pslist **a, t_pslist **b, int print)
 {
-	push(b, a);
-	ft_printf("pa\n");
+	if (*b)
+	{
+		push(b, a);
+		if (print)
+			ft_printf("pa\n");
+	}
 }
 
-void	pb(t_pslist **a, t_pslist **b)
+void	pb(t_pslist **a, t_pslist **b, int print)
 {
-	push(a, b);
-	ft_printf("pb\n");
+	if (*a)
+	{
+		push(a, b);
+		if (print)
+			ft_printf("pb\n");
+	}
 }

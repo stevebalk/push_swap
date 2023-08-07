@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:04:27 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 15:10:17 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 18:30:55 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,11 +203,5 @@ t_list	*ft_lstnew(void *content);
 
 /* Returns number of elements of linked list */
 int		ft_lstsize(t_list *lst);
-
-/////////////////////
-//     PRINTF    ////
-/////////////////////
-
-
 
 #endif

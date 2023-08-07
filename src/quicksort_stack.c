@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:53:40 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:25:52 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 18:32:27 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,29 +66,29 @@ static int	sorting_logic(t_pslist **a, t_pslist **b, t_qsdata data)
 	if ((*a)->index >= data.min && (*a)->index <= data.median)
 	{
 		if (*b && (*b)->index > data.median)
-			rb(b);
-		pb(a, b);
+			rb(b, 1);
+		pb(a, b, 1);
 		i++;
 	}
 	else if ((*a)->index > data.median && (*a)->index <= data.max)
 	{
 		if (*b && (*b)->index > data.median)
-			rb(b);
-		pb(a, b);
+			rb(b, 1);
+		pb(a, b, 1);
 		i++;
 	}
 	else
 	{
 		if (*b && (*b)->next && (*b)->index > data.median)
-			rr(a, b);
+			rr(a, b, 1);
 		else
-			ra(a);
+			ra(a, 1);
 	}
 	return (i);
 }
 
 /* Sorts n chunks from a to b, from small to high */
-void	quicksort_stack(t_pslist **a, t_pslist **b, int size, int chunks)
+void	qs_stack(t_pslist **a, t_pslist **b, int size, int chunks)
 {
 	int			chunksize;
 	int			i;

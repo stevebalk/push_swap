@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 16:03:33 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 18:31:58 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			get_next_pos(t_pslist **src, int index);
 void		quicksort(int arr[], int low, int high);
 void		sort_three(t_pslist **a);
 void		sort_five(t_pslist **a, t_pslist **b);
-void		quicksort_stack(t_pslist **src, t_pslist **dst, int size, int chunks);
+void		qs_stack(t_pslist **src, t_pslist **dst, int size, int chunks);
 void		insertion_sort(t_pslist **a, t_pslist **b);
 
 /* List functions */
@@ -69,16 +69,16 @@ int			is_list_n_sorted(t_pslist **stack, int len, int dir);
 
 /* Push swap functions */
 
-void		pa(t_pslist **a, t_pslist **b);
-void		pb(t_pslist **a, t_pslist **b);
-void		ra(t_pslist **stack);
-void		rb(t_pslist **stack);
-void		rr(t_pslist **a, t_pslist **b);
-void		rra(t_pslist **a);
-void		rrb(t_pslist **b);
-void		rrr(t_pslist **a, t_pslist **b);
-void		sa(t_pslist **a);
-void		sb(t_pslist **b);
-void		ss(t_pslist **a, t_pslist **b);
+void		pa(t_pslist **a, t_pslist **b, int print);
+void		pb(t_pslist **a, t_pslist **b, int print);
+void		ra(t_pslist **stack, int print);
+void		rb(t_pslist **stack, int print);
+void		rr(t_pslist **a, t_pslist **b, int print);
+void		rra(t_pslist **a, int print);
+void		rrb(t_pslist **b, int print);
+void		rrr(t_pslist **a, t_pslist **b, int print);
+void		sa(t_pslist **a, int print);
+void		sb(t_pslist **b, int print);
+void		ss(t_pslist **a, t_pslist **b, int print);
 
 #endif

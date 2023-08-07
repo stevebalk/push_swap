@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:06:33 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:30:57 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 18:35:53 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,30 @@ void	rotate(t_pslist **head)
 	}
 }
 
-void	ra(t_pslist **stack)
+void	ra(t_pslist **stack, int print)
 {
-	if ((*stack)->next)
+	if (*stack && (*stack)->next)
 	{
 		rotate(stack);
-		ft_printf("ra\n");
+		if (print)
+			ft_printf("ra\n");
 	}
 }
 
-void	rb(t_pslist **stack)
+void	rb(t_pslist **stack, int print)
 {
-	if ((*stack)->next)
+	if (*stack && (*stack)->next)
 	{
 		rotate(stack);
-		ft_printf("rb\n");
+		if (print)
+			ft_printf("rb\n");
 	}
 }
 
-void	rr(t_pslist **a, t_pslist **b)
+void	rr(t_pslist **a, t_pslist **b, int print)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rr\n");
+	if (print)
+		ft_printf("rr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:43:01 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 16:02:18 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 18:32:39 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sort(t_pslist **a, t_pslist **b, int stacksize)
 {
 	if (stacksize == 2 && !is_list_n_sorted(a, 2, 1))
-		sa(a);
+		sa(a, 1);
 	else if (stacksize == 3)
 		sort_three(a);
 	else if (stacksize == 5)
@@ -23,13 +23,13 @@ void	sort(t_pslist **a, t_pslist **b, int stacksize)
 	else
 	{
 		if (stacksize == 100)
-			quicksort_stack(a, b, stacksize, 10);
+			qs_stack(a, b, stacksize, 10);
 		else if (stacksize == 500)
-			quicksort_stack(a, b, stacksize, 20);
+			qs_stack(a, b, stacksize, 20);
 		else if (stacksize < 100)
-			quicksort_stack(a, b, stacksize, 2);
+			qs_stack(a, b, stacksize, 2);
 		else
-			quicksort_stack(a, b, stacksize, 20);
+			qs_stack(a, b, stacksize, 20);
 		insertion_sort(a, b);
 	}
 	ps_free_list(a);

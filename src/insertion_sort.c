@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:53:50 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:25:11 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 17:30:42 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,20 @@ static int	smart_push(t_pslist **a, t_pslist **b, int next_pos, int lower_idx)
 	{
 		if ((*b)->index == lower_idx)
 		{
-			pa(a, b);
-			ra(a);
+			pa(a, b, 1);
+			ra(a, 1);
 			pushed_lower = 1;
 			if (next_pos < 0)
 				next_pos--;
 		}
 		else if (next_pos < 0)
-			rrb(b);
+			rrb(b, 1);
 		else
-			rb(b);
+			rb(b, 1);
 	}
-	pa(a, b);
+	pa(a, b, 1);
 	if (pushed_lower)
-		rra(a);
+		rra(a, 1);
 	return (pushed_lower);
 }
 
@@ -85,7 +85,7 @@ void	insertion_sort(t_pslist **a, t_pslist **b)
 		if ((*b)->next)
 			offset += smart_push(a, b, next_pos, sort_arr[size - 2 - offset]);
 		else
-			pa(a, b);
+			pa(a, b, 1);
 		offset++;
 	}
 	free(sort_arr);

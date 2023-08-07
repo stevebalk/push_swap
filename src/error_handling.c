@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:05 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 16:02:34 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 18:34:29 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	error_free(t_pslist **a, t_pslist **b, int *arr1, int *arr2)
 	write(2, "\n", 1);
 	exit(EXIT_FAILURE);
 }
-
-
 
 static void	check_one_input(char **str)
 {
