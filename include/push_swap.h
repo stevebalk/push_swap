@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:42:58 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:56:09 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 16:03:33 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		insertion_sort(t_pslist **a, t_pslist **b);
 t_pslist	*create_node(int value);
 int			create_stack(t_pslist **a, char **arr, int size);
 int			copy_list_to_array(t_pslist *src, int **dst);
-void		free_list(t_pslist **head);
+void		ps_free_list(t_pslist **head);
 int			get_list_size(t_pslist *stack);
 int			is_list_n_sorted(t_pslist **stack, int len, int dir);
 

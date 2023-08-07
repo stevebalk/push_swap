@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:05 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:24:47 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 16:02:34 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@
 void	error_free(t_pslist **a, t_pslist **b, int *arr1, int *arr2)
 {
 	if (a)
-		free_list(a);
+		if (a != NULL)
+			ps_free_list(a);
 	if (b)
-		free_list(b);
+		if (b != NULL)
+			ps_free_list(b);
 	if (arr1)
-		free(arr1);
+		if (arr1 != NULL)
+			free(arr1);
 	if (arr2)
-		free(arr2);
+		if (arr2 != NULL)
+			free(arr2);
 	write(2, "Error", 5);
 	write(2, "\n", 1);
 	exit(EXIT_FAILURE);

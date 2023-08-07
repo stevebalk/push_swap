@@ -6,13 +6,13 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:25:24 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 16:02:44 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_list(t_pslist **head)
+void	ps_free_list(t_pslist **head)
 {
 	t_pslist	*next_pslist;
 
@@ -82,6 +82,8 @@ int	is_list_n_sorted(t_pslist **stack, int len, int dir)
 	}
 	return (1);
 }
+
+
 
 // void	debug_print_stack(t_pslist *stack, char *name)
 // {

@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:43:01 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:54:54 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 16:02:18 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	sort(t_pslist **a, t_pslist **b, int stacksize)
 			quicksort_stack(a, b, stacksize, 20);
 		insertion_sort(a, b);
 	}
-	free_list(a);
+	ps_free_list(a);
 }
 
 int	main(int argc, char **argv)

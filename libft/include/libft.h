@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:04:27 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:19:15 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 15:10:17 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,9 @@ void	ft_free_2darray(void **arr, size_t size);
 /* Looks for a specific character inside a given string,
  * returning pointer to it*/
 char	*ft_strchr(const char *s, int c);
+
+/* Returns true if both strings are equivalent */
+int		ft_streq(char *s1, char *s2);
 
 /* Saves enoug space and duplicates a string */
 char	*ft_strdup(const char *s);

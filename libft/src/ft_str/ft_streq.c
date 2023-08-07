@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_streq.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 15:45:46 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:24:26 by sbalk            ###   ########.fr       */
+/*   Created: 2023/08/07 15:02:59 by sbalk             #+#    #+#             */
+/*   Updated: 2023/08/07 15:11:22 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-char	**read_input(int fd)
+int	ft_streq(char *s1, char *s2)
 {
-	char	**moves;
-	char	*valid_input[15];
-
-	*valid_input = ["sa\n", "sb\n"]
-	
-}
-
-int main(int argc, char *argv)
-{
-	t_pslist	*a;
-	t_pslist	*b;
-	char		**moves;
-
-	argc--;
-	argv++;
-	error_check(argv, argc);
-	create_stack(&a, argv, argc);
-	
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			return (0);
+		s1++;
+		s2++;
+	}
+	if (*s1 != *s2)
+		return (0);
+	return (1);
 }

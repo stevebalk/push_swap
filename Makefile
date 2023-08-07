@@ -6,7 +6,7 @@
 #    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 15:43:43 by sbalk             #+#    #+#              #
-#    Updated: 2023/08/07 13:57:18 by sbalk            ###   ########.fr        #
+#    Updated: 2023/08/07 16:14:38 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ CC			= gcc
 CFLAGS		= -Werror -Wall -Wextra -g
 RM			= rm
 SRC_DIR		= src/
+BSRC_DIR	= src/checker
 OBJ_DIR		= obj/
+BOBJ_DIR	= bobj/
 AR			= ar rcs
 INCLUDE		= -I include -I libft/include
 
@@ -50,13 +52,13 @@ SRC_FILES	=	error_handling \
 				string_func \
 				array_list_func
 
-CHECKER_FILES	= checker
+CHECKER_FILES	= checker checker_uitls
 
 SRC				=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ				=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-CHECKER_SRC		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(CHECKER_FILES)))
-CHECKER_OBJ		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(CHECKER_FILES)))
+BSRC			=	$(addprefix $(BSRC_DIR), $(addsuffix .c, $(CHECKER_FILES)))
+BOBJ			=	$(addprefix $(BOBJ_DIR), $(addsuffix .o, $(CHECKER_FILES)))
 
 DEBUG_SRC		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 BEBUG_OBJ		=	$(addprefix $(DOBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -78,17 +80,18 @@ $(DOBJ_DIR)%.o: $(SRC_DIR)%.c
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@ -g
 
-$(CHECKER_OBJ_DIR)%.o: $(SRC_DIR)%.c
-			@mkdir -p $(CHECKER_OBJ_DIR)
+$(BOBJ_DIR)%.o: $(BSRC_DIR)%.c
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-checker:	$(CHECKER_OBJ)
-			@$(CC) $(CFLAGS) $(CHECKER_OBJ) -o $(CHECKER)
+bonus	:	$(BOBJ)
+			@make -C $(LIB_DIR)
+			@$(CC) $(CFLAGS) $(BOBJ) -L $(LIB_DIR) -lft -o $(CHECKER)
 			@echo "$(GREEN)Created $(CHECKER)!$(DEF_COLOR)"
 
 clean:
 			@$(RM) -rf $(OBJ_DIR)
+			@$(RM) -rf $(BOBJ_DIR)
 			@make clean -C $(LIB_DIR)
 			@echo "$(BLUE)$(NAME) object files cleaned!$(DEF_COLOR)"
 
