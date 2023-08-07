@@ -6,13 +6,13 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:53:50 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 18:50:16 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 14:25:11 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_next_pos(t_node **src, int index)
+int	get_next_pos(t_pslist **src, int index)
 {
 	int	i;
 	int	j;
@@ -41,7 +41,7 @@ int	get_next_pos(t_node **src, int index)
 }
 
 /* Push next desired index and one index below if possible */
-static int	smart_push(t_node **a, t_node **b, int next_pos, int lower_idx)
+static int	smart_push(t_pslist **a, t_pslist **b, int next_pos, int lower_idx)
 {
 	int	i;
 	int	pushed_lower;
@@ -69,7 +69,7 @@ static int	smart_push(t_node **a, t_node **b, int next_pos, int lower_idx)
 	return (pushed_lower);
 }
 
-void	insertion_sort(t_node **a, t_node **b)
+void	insertion_sort(t_pslist **a, t_pslist **b)
 {
 	int	*sort_arr;
 	int	size;

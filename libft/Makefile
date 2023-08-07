@@ -26,7 +26,8 @@ FTIS			=	ft_isalnum ft_isalpha ft_isascii ft_isdigit \
 					ft_isprint ft_is_str_int ft_is_str_num ft_is_space
 
 FTMEM_DIR		=	ft_mem/
-FTMEM			=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset
+FTMEM			=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset \
+					ft_free_array ft_free_2darray
 
 FTPUT_DIR		=	ft_put/
 FTPUT			=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd

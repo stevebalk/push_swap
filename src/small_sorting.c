@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 11:35:14 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 18:47:10 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 14:26:13 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 /* Rotates the stack to it's final positon with the
 least amount of moves */
-static void	last_rotate(t_node **a)
+static void	last_rotate(t_pslist **a)
 {
-	t_node	*cur_node;
+	t_pslist	*cur_node;
 	int		first_index_pos;
 
 	cur_node = *a;
@@ -43,7 +43,7 @@ static void	last_rotate(t_node **a)
 
 /* Pushes the the top node of stack b to it's final
 position with the least amount of moves */
-static void	smart_insert(t_node **a, t_node **b)
+static void	smart_insert(t_pslist **a, t_pslist **b)
 {
 	int	next_pos;
 	int	i;
@@ -67,7 +67,7 @@ static void	smart_insert(t_node **a, t_node **b)
 	}
 }
 
-void	sort_three(t_node **a)
+void	sort_three(t_pslist **a)
 {
 	int	one;
 	int	two;
@@ -98,14 +98,14 @@ void	sort_three(t_node **a)
 
 /* Inserts the last two nodes from stack b to
 theit final positon in stack a */
-void	insert_two(t_node **a, t_node **b)
+void	insert_two(t_pslist **a, t_pslist **b)
 {
 	if ((*b)->index < (*b)->next->index)
 		sb(b);
 	smart_insert(a, b);
 }
 
-void	sort_five(t_node **a, t_node **b)
+void	sort_five(t_pslist **a, t_pslist **b)
 {
 	pb(a, b);
 	pb(a, b);

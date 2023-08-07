@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:45:26 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 17:02:23 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 14:21:26 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,17 @@ void	putstr(char	*str)
 		write(1, str, 1);
 		str++;
 	}
+}
+
+int	str_arr_len(char **arr)
+{
+	int	size;
+
+	size = 0;
+	while (*arr)
+	{
+		arr++;
+		size++;
+	}
+	return size;
 }

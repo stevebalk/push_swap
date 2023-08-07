@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 15:56:23 by sbalk             #+#    #+#             */
-/*   Updated: 2023/06/09 12:15:11 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 13:02:41 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ typedef struct s_lst
 # endif
 
 char	*get_next_line(int fd);
-t_lst	*create_node(char *buffer, t_lst **stash, int fd, ssize_t br);
-int		check_new_line(t_lst *node);
-char	*create_new_line(t_lst *node, t_lst **stash, int fd);
-void	node_to_string(char *str, t_lst *node);
-t_lst	*free_list(t_lst *node);
+void	gnl_node_to_string(char *str, t_lst *node);
+t_lst	*gnl_free_list(t_lst *node);
 
 #endif

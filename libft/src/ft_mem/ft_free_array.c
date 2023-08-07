@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_free_arr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 15:45:46 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:24:26 by sbalk            ###   ########.fr       */
+/*   Created: 2023/08/07 14:00:47 by sbalk             #+#    #+#             */
+/*   Updated: 2023/08/07 14:11:30 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-char	**read_input(int fd)
+void	ft_free_array(void *arr)
 {
-	char	**moves;
-	char	*valid_input[15];
-
-	*valid_input = ["sa\n", "sb\n"]
-	
-}
-
-int main(int argc, char *argv)
-{
-	t_pslist	*a;
-	t_pslist	*b;
-	char		**moves;
-
-	argc--;
-	argv++;
-	error_check(argv, argc);
-	create_stack(&a, argv, argc);
-	
+	if (arr != NULL)
+		free(arr);
 }

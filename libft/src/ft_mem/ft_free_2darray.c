@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_free_2darray.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 15:45:46 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 14:24:26 by sbalk            ###   ########.fr       */
+/*   Created: 2023/08/07 14:07:40 by sbalk             #+#    #+#             */
+/*   Updated: 2023/08/07 14:14:20 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-char	**read_input(int fd)
+void	ft_free_2darray(void **arr, size_t size)
 {
-	char	**moves;
-	char	*valid_input[15];
-
-	*valid_input = ["sa\n", "sb\n"]
-	
-}
-
-int main(int argc, char *argv)
-{
-	t_pslist	*a;
-	t_pslist	*b;
-	char		**moves;
-
-	argc--;
-	argv++;
-	error_check(argv, argc);
-	create_stack(&a, argv, argc);
-	
+	if (arr == NULL)
+		return ;
+	while (size--)
+		if (arr[size] != NULL)
+			free(arr[size]);
+	free (arr);
 }

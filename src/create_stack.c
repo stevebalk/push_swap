@@ -6,13 +6,13 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 14:26:20 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 18:51:18 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 14:55:26 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*str_to_int_array(t_node **a, char **arr, int size)
+int	*str_to_int_array(t_pslist **a, char **arr, int size)
 {
 	int	*ret;
 	int	i;
@@ -29,10 +29,10 @@ int	*str_to_int_array(t_node **a, char **arr, int size)
 	return (ret);
 }
 
-static void	set_index(t_node **a, int *arr, int size)
+static void	set_index(t_pslist **a, int *arr, int size)
 {
 	int		i;
-	t_node	*cur_node;
+	t_pslist	*cur_node;
 
 	i = 0;
 	quicksort(arr, 0, size - 1);
@@ -51,10 +51,10 @@ static void	set_index(t_node **a, int *arr, int size)
 	free(arr);
 }
 
-void	create_stack(t_node **a, char **arr, int size)
+static void	multiple_input_create(t_pslist **a, char **arr, int size)
 {
 	int		*num_arr;
-	t_node	*head_node;
+	t_pslist	*head_node;
 	int		i;
 
 	num_arr = str_to_int_array(a, arr, size);
@@ -77,4 +77,27 @@ void	create_stack(t_node **a, char **arr, int size)
 	}
 	*a = head_node;
 	set_index(a, num_arr, size);
+}
+
+static int	single_input_create(t_pslist **a, char *arr)
+{
+	char	**input;
+	int		size;
+
+	input = ft_split(arr, ' ');
+	if (input == NULL)
+		error_free(NULL, NULL, NULL, NULL);
+	size = str_arr_len(input);
+	multiple_input_create(a, input, size);
+	ft_free_2darray((void **) input, size + 1);
+	return size;
+}
+
+int	create_stack(t_pslist **a, char **arr, int size)
+{
+	if (size == 1)
+		size = single_input_create(a, arr[0]);
+	else
+		multiple_input_create(a, arr, size);
+	return size;
 }

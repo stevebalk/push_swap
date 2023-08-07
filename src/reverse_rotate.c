@@ -6,23 +6,23 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:49:28 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 18:51:38 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 14:31:30 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_node	*get_second_last(t_node *node)
+static t_pslist	*get_second_last(t_pslist *node)
 {
 	while (node->next->next != NULL)
 		node = node->next;
 	return (node);
 }
 
-void	reverse_rotate(t_node **head)
+void	reverse_rotate(t_pslist **head)
 {
-	t_node	*tail;
-	t_node	*second_last;
+	t_pslist	*tail;
+	t_pslist	*second_last;
 
 	if (*head && (*head)->next)
 	{
@@ -34,27 +34,27 @@ void	reverse_rotate(t_node **head)
 	}
 }
 
-void	rra(t_node **a)
+void	rra(t_pslist **a)
 {
 	if ((*a)->next != NULL)
 	{
 		reverse_rotate(a);
-		putstr("rra\n");
+		ft_printf("rra\n");
 	}
 }
 
-void	rrb(t_node **b)
+void	rrb(t_pslist **b)
 {
 	if ((*b)->next != NULL)
 	{
 		reverse_rotate(b);
-		putstr("rrb\n");
+		ft_printf("rrb\n");
 	}
 }
 
-void	rrr(t_node **a, t_node **b)
+void	rrr(t_pslist **a, t_pslist **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	putstr("rrr\n");
+	ft_printf("rrr\n");
 }

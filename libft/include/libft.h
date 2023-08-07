@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:04:27 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 18:02:57 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 14:19:15 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 # define LIBFT_H
 
 # include <stddef.h>
-# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 typedef struct s_list
 {
@@ -95,6 +97,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 
 /* Assigns a character n times to a part of the memory*/
 void	*ft_memset(void *s, int c, size_t n);
+
+/* Free every possible array */
+void	ft_free_array(void *arr);
+
+/* Free every possible 2d array */
+void	ft_free_2darray(void **arr, size_t size);
 
 /////////////////////
 //    STRING     ////

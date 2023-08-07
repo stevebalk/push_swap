@@ -6,14 +6,14 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:42:12 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 18:21:01 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 14:24:19 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Copies a linked list to an array and returns the size */
-int	copy_list_to_array(t_node *src, int **dst)
+int	copy_list_to_array(t_pslist *src, int **dst)
 {
 	int	list_size;
 	int	i;

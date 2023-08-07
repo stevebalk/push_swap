@@ -6,14 +6,14 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:53:40 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 18:20:23 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 14:25:52 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Returns the smallest index value from the given list */
-static int	get_chunk_min_index(t_node *stack)
+static int	get_chunk_min_index(t_pslist *stack)
 {
 	int	min_value;
 
@@ -30,7 +30,7 @@ static int	get_chunk_min_index(t_node *stack)
 }
 
 /* Returns the highest index value from the given list */
-static int	get_chunk_max_index(t_node *stack, int chunksize)
+static int	get_chunk_max_index(t_pslist *stack, int chunksize)
 {
 	int	*sorted_values;
 	int	array_size;
@@ -44,7 +44,7 @@ static int	get_chunk_max_index(t_node *stack, int chunksize)
 }
 
 /* Calculates and returns the median index of a given chunk */
-static int	get_chunk_median(t_node *stack, int chunksize)
+static int	get_chunk_median(t_pslist *stack, int chunksize)
 {
 	int	*sorted_values;
 	int	array_size;
@@ -58,7 +58,7 @@ static int	get_chunk_median(t_node *stack, int chunksize)
 }
 
 /* Sorting logic for stack quicksort */
-static int	sorting_logic(t_node **a, t_node **b, t_qsdata data)
+static int	sorting_logic(t_pslist **a, t_pslist **b, t_qsdata data)
 {
 	int	i;
 
@@ -88,7 +88,7 @@ static int	sorting_logic(t_node **a, t_node **b, t_qsdata data)
 }
 
 /* Sorts n chunks from a to b, from small to high */
-void	quicksort_stack(t_node **a, t_node **b, int size, int chunks)
+void	quicksort_stack(t_pslist **a, t_pslist **b, int size, int chunks)
 {
 	int			chunksize;
 	int			i;

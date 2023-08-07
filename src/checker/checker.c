@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 12:59:41 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/02 14:11:38 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 14:24:10 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ int	read_input(char	***instructions)
 
 int main(int argc, char **argv)
 {
-	t_node	*a;
-	t_node	*b;
-	char	**instructions;
-	int		is_correct_input;
+	t_pslist	*a;
+	t_pslist	*b;
+	char		**instructions;
+	int			is_correct_input;
 
 	argc--;
 	argv++;

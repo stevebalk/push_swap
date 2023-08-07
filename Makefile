@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbalk <sbalk@student.42.fr>                +#+  +:+       +#+         #
+#    By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 15:43:43 by sbalk             #+#    #+#              #
-#    Updated: 2023/08/03 16:18:15 by sbalk            ###   ########.fr        #
+#    Updated: 2023/08/07 13:57:18 by sbalk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 SRC_FILES	=	error_handling \
+				error_utils \
 				list_utils \
 				push \
 				reverse_rotate \

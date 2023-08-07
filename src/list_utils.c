@@ -6,30 +6,30 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:52:36 by sbalk             #+#    #+#             */
-/*   Updated: 2023/07/29 18:23:13 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/07 14:25:24 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_list(t_node **head)
+void	free_list(t_pslist **head)
 {
-	t_node	*next_node;
+	t_pslist	*next_pslist;
 
 	while (*head != NULL)
 	{
-		next_node = (*head)->next;
+		next_pslist = (*head)->next;
 		free(*head);
-		*head = next_node;
+		*head = next_pslist;
 	}
 	*head = NULL;
 }
 
-t_node	*create_node(int value)
+t_pslist	*create_node(int value)
 {
-	t_node	*new_node;
+	t_pslist	*new_node;
 
-	new_node = malloc(1 * sizeof(t_node));
+	new_node = malloc(1 * sizeof(t_pslist));
 	if (new_node == NULL)
 		return (NULL);
 	new_node->value = value;
@@ -38,10 +38,10 @@ t_node	*create_node(int value)
 	return (new_node);
 }
 
-int	get_list_size(t_node *stack)
+int	get_list_size(t_pslist *stack)
 {
 	int		size;
-	t_node	*cur_node;
+	t_pslist	*cur_node;
 
 	size = 0;
 	cur_node = stack;
@@ -55,9 +55,9 @@ int	get_list_size(t_node *stack)
 
 /* Checks if list is sorted for n elements.
 dir 1 == low to high, dir -1 high to low */
-int	is_list_n_sorted(t_node **stack, int len, int dir)
+int	is_list_n_sorted(t_pslist **stack, int len, int dir)
 {
-	t_node	*cur_node;
+	t_pslist	*cur_node;
 
 	cur_node = *stack;
 	if (dir == 1)
@@ -83,7 +83,7 @@ int	is_list_n_sorted(t_node **stack, int len, int dir)
 	return (1);
 }
 
-// void	debug_print_stack(t_node *stack, char *name)
+// void	debug_print_stack(t_pslist *stack, char *name)
 // {
 // 	printf("-----------\n");
 // 	printf("Stack %s\n", name);
