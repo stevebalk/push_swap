@@ -6,7 +6,7 @@
 /*   By: sbalk <sbalk@student.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:12:05 by sbalk             #+#    #+#             */
-/*   Updated: 2023/08/07 18:34:29 by sbalk            ###   ########.fr       */
+/*   Updated: 2023/08/09 17:07:28 by sbalk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,22 @@ static void	check_one_input(char **str)
 {
 	char	**input;
 	int		size;
-	int		is_valid;
 
 	input = ft_split(*str, ' ');
 	if (input == NULL)
 		error_free(NULL, NULL, NULL, NULL);
 	size = str_arr_len(input);
-	is_valid = 1;
 	if (size <= 1 || !is_valid_input(input, size) || is_dup(input, size))
-		is_valid = 0;
+	{
+		ft_free_2darray((void **) input, size + 1);
+		error_free(NULL, NULL, NULL, NULL);
+	}
 	if (is_sorted(input, size))
 	{
 		ft_free_2darray((void **) input, size + 1);
 		exit (EXIT_SUCCESS);
 	}
 	ft_free_2darray((void **) input, size + 1);
-	if (!is_valid)
-		error_free(NULL, NULL, NULL, NULL);
 }
 
 static void	check_multiple_inputs(char **str, int size)
